@@ -8,8 +8,8 @@ import org.koin.dsl.module
 
 object PokemonSearchDependencyInjectionModules {
     private val pokemonSearchModules = module {
-        single<PokemonSearchRepository> { PokemonSearchRepositoryImpl() }
-        viewModel { PokemonSearchViewModel() }
+        single<PokemonSearchRepository> { PokemonSearchRepositoryImpl( get()) }
+        viewModel { PokemonSearchViewModel(get()) }
     }
     val modules = arrayOf(pokemonSearchModules)
 }
