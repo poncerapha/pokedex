@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.example.pokedex.controller.PokemonPageController
-import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentPokemonPageBinding
 import com.example.pokedex.network.UIState
-import com.example.pokedex.network.data
 import com.example.pokedex.viewmodel.PokemonPageViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

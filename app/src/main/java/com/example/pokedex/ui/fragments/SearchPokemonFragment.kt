@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
@@ -33,11 +34,15 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         super.onViewCreated(view, savedInstanceState)
 
         setupEpoxyController()
-        pokemonSearchViewModel.getPokemonSearchList(150, 0)
+        pokemonSearchViewModel.getPokemonSearchList()
         pokemonSearchViewModel.pokemonSearchList.observe(viewLifecycleOwner) {
             when(it) {
                 is UIState.Success -> {
+                    binding.pokemonCardShimmer.root.isVisible = false
                     epoxyController.setPokemonList(it.data)
+                }
+                is UIState.Loading -> {
+                    binding.pokemonCardShimmer.root.isVisible = true
                 }
                 else -> {
                     println()

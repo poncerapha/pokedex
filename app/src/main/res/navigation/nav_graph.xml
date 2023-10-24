@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_searchPokemonFragment"
-            app:destination="@id/searchPokemonFragment" />
+            app:destination="@id/searchPokemonFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/searchPokemonFragment"
@@ -21,7 +25,11 @@
         tools:layout="@layout/fragment_search_pokemon" >
         <action
             android:id="@+id/action_searchPokemonFragment_to_pokemonPageFragment"
-            app:destination="@id/pokemonPageFragment" />
+            app:destination="@id/pokemonPageFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/pokemonPageFragment"

@@ -3,6 +3,7 @@ package com.example.pokedex.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokedex.constants.PokemonSearchConstants.POKEMON_SEARCH_LIMIT
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.models.PokemonSearch
 import com.example.pokedex.network.UIState
@@ -19,11 +20,11 @@ class PokemonSearchViewModel(
     private val _pokemonSearchList = MutableLiveData<UIState<List<PokemonCard>>>()
     val pokemonSearchList get() = _pokemonSearchList
 
-    fun getPokemonSearchList(limit: Int, offset: Int) = viewModelScope.launch {
+    fun getPokemonSearchList() = viewModelScope.launch {
         _pokemonSearchList.value = UIState.Loading()
         pokemonSearchRepository.getPokemonList(
-            limit = limit,
-            offset = offset
+            limit = POKEMON_SEARCH_LIMIT,
+            offset = 0
         )
             .onSuccess {
                 val pokemonImageUrl = pokemonCards(it)

@@ -2,7 +2,6 @@ package com.example.pokedex.controller
 
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokedex.interfaces.PokemonSearchListener
-import com.example.pokedex.models.Pokemon
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.ui.viewholders.pokemonCardHolder
 
