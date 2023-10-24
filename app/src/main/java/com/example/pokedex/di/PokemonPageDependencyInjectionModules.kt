@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 object PokemonPageDependencyInjectionModules {
     private val pokemonPageModules = module {
-        single<PokemonPageRepository> { PokemonPageRepositoryImpl() }
+        single<PokemonPageRepository> { PokemonPageRepositoryImpl(get()) }
         viewModel { PokemonPageViewModel() }
     }
     val modules = arrayOf(pokemonPageModules)
