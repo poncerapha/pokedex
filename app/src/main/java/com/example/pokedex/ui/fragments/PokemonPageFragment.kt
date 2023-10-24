@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.pokedex.databinding.FragmentPokemonPageBinding
+import com.example.pokedex.network.UIState
+import com.example.pokedex.network.data
 import com.example.pokedex.viewmodel.PokemonPageViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,7 +31,14 @@ class PokemonPageFragment : Fragment() {
         pokemonPageViewModel.getPokemon("bulbasaur")
 
         pokemonPageViewModel.pokemon.observe(viewLifecycleOwner) {
-            binding.pokemonName.text = it.name
+            when(it) {
+                is UIState.Success -> {
+                    binding.pokemonName.text = it.data.name
+                }
+                else -> {
+
+                }
+            }
         }
     }
 }

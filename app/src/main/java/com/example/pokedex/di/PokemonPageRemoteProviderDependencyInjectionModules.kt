@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 object PokemonPageRemoteProviderDependencyInjectionModules {
     private val pokemonPageModules = module {
-        factory<PokemonPageRemoteProvider> { PokemonPageRemoteProviderImpl(get()) }
+        single<PokemonPageRemoteProvider> { PokemonPageRemoteProviderImpl() }
     }
     val modules = arrayOf(pokemonPageModules)
 }

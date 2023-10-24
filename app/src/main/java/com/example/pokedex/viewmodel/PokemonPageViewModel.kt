@@ -4,24 +4,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.models.Pokemon
+import com.example.pokedex.network.UIState
+import com.example.pokedex.network.onError
+import com.example.pokedex.network.onSuccess
 import com.example.pokedex.repository.PokemonPageRepository
 import kotlinx.coroutines.launch
 
 class PokemonPageViewModel(
     private val pokemonPageRepository: PokemonPageRepository
 ): ViewModel() {
-    private val _pokemon = MutableLiveData<Pokemon>()
+    private val _pokemon = MutableLiveData<UIState<Pokemon>>()
     val pokemon get() = _pokemon
 
     fun getPokemon(name: String) = viewModelScope.launch {
+        _pokemon.value = UIState.Loading()
         pokemonPageRepository.getPokemon(
             name = name
         )
             .onSuccess {
-                _pokemon.value = it
+                _pokemon.value = UIState.Success(it)
             }
-            .onFailure {
-                throw Exception(it)
+            .onError {
+                _pokemon.value = UIState.Error()
             }
     }
 }

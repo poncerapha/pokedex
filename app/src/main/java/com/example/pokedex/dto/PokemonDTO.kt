@@ -1,5 +1,7 @@
 package com.example.pokedex.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class PokemonDTO(
-    val name: String
+    @JsonProperty("name") val name: String
 )

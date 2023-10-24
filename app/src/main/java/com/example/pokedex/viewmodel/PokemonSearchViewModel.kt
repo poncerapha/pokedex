@@ -19,11 +19,11 @@ class PokemonSearchViewModel(
             limit = limit,
             offset = offset
         )
-            .onSuccess {
-                _pokemonSearchList.value = it
-            }
-            .onFailure {
-                throw Exception(it)
-            }
+//            .onSuccess {
+//                _pokemonSearchList.value = it
+//            }
+//            .onFailure {
+//                throw Exception(it)
+//            }
     }
 }

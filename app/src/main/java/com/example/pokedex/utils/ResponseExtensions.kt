@@ -1,20 +1,23 @@
 package com.example.pokedex.utils
 
-import retrofit2.Response
+import android.util.Log
+import com.example.pokedex.network.Response
 
-fun <T>Response<T>.toResult(): Result<T> {
-    val body = this.body()
-    val errorBody = this.errorBody()
+suspend fun <T> safeCall(call: suspend () -> retrofit2.Response<T>): Response<T> {
+    //TODO - Passar por parametro quem está chamando
+    return try {
+        call().formatResponse()
+    } catch (e: Exception) {
+        Log.e("safe call", e.message, e)
+        Response.ErrorException(e)
+    }
+}
 
-    return when {
-        body != null -> {
-            Result.success(body)
-        }
-        errorBody != null -> {
-            Result.failure(Exception(errorBody.string()))
-        }
-        else -> {
-            Result.failure(Exception("Unknown error: ${this.raw().message()}"))
-        }
+
+fun <T> retrofit2.Response<T>.formatResponse(): Response<T> {
+    return if (isSuccessful) {
+        Response.Success(this)
+    } else {
+        Response.Error(this)
     }
 }
