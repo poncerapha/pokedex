@@ -1,72 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:backgroundTint="@color/pokemon_card_placeholder_color"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp" />
 
-    </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:backgroundTint="@color/pokemon_card_placeholder_color"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

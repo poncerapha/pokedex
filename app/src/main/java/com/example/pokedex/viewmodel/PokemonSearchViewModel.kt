@@ -16,19 +16,20 @@ import kotlinx.coroutines.launch
 class PokemonSearchViewModel(
     private val pokemonSearchRepository: PokemonSearchRepository
 ): ViewModel() {
-
     private val _pokemonSearchList = MutableLiveData<UIState<List<PokemonCard>>>()
     val pokemonSearchList get() = _pokemonSearchList
+    private var offset = 0
 
     fun getPokemonSearchList() = viewModelScope.launch {
         _pokemonSearchList.value = UIState.Loading()
         pokemonSearchRepository.getPokemonList(
             limit = POKEMON_SEARCH_LIMIT,
-            offset = 0
+            offset = offset
         )
             .onSuccess {
                 val pokemonImageUrl = pokemonCards(it)
                 _pokemonSearchList.value = UIState.Success(pokemonImageUrl)
+                offset += POKEMON_SEARCH_LIMIT
             }
             .onError {
                 _pokemonSearchList.value = UIState.Error()
