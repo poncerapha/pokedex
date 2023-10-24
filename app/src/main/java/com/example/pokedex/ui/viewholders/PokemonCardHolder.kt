@@ -12,9 +12,15 @@ abstract class PokemonCardHolder: BaseEpoxyModel<HolderPokemonCardBinding>(
     @EpoxyAttribute
     lateinit var pokemonName: String
 
+    @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
+    lateinit var onPokemonCardClickListener: (name: String) -> Unit
+
     override fun bind(binding: HolderPokemonCardBinding) {
         with(binding) {
             pokemonCardName.text = pokemonName
+            pokemonCardContainer.setOnClickListener {
+                onPokemonCardClickListener(pokemonName)
+            }
         }
     }
 }

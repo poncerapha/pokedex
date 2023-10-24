@@ -5,8 +5,8 @@ import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProviderImp
 import org.koin.dsl.module
 
 object PokemonSearchRemoteProviderDependencyInjectionModules {
-    private val pokemonPageModules = module {
-        factory<PokemonSearchRemoteProvider> { PokemonSearchRemoteProviderImpl(get()) }
+    private val pokemonSearchModules = module {
+        single <PokemonSearchRemoteProvider> { PokemonSearchRemoteProviderImpl() }
     }
-    val modules = arrayOf(pokemonPageModules)
+    val modules = arrayOf(pokemonSearchModules)
 }

@@ -9,14 +9,26 @@
         android:id="@+id/welcomeFragment"
         android:name="com.example.pokedex.ui.fragments.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_searchPokemonFragment"
+            app:destination="@id/searchPokemonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchPokemonFragment"
         android:name="com.example.pokedex.ui.fragments.SearchPokemonFragment"
         android:label="fragment_search_pokemon"
-        tools:layout="@layout/fragment_search_pokemon" />
+        tools:layout="@layout/fragment_search_pokemon" >
+        <action
+            android:id="@+id/action_searchPokemonFragment_to_pokemonPageFragment"
+            app:destination="@id/pokemonPageFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/pokemonFragment"
+        android:id="@+id/pokemonPageFragment"
         android:name="com.example.pokedex.ui.fragments.PokemonPageFragment"
-        android:label="PokemonFragment" />
+        android:label="PokemonPageFragment" >
+        <argument
+            android:name="pokemonName"
+            app:argType="string" />
+    </fragment>
 </navigation>

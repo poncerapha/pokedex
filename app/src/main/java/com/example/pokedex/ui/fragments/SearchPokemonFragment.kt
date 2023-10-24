@@ -5,16 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.pokedex.R
 import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
+import com.example.pokedex.interfaces.PokemonSearchListener
 import com.example.pokedex.network.UIState
 import com.example.pokedex.viewmodel.PokemonSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchPokemonFragment: Fragment() {
+class SearchPokemonFragment: Fragment(), PokemonSearchListener {
     private lateinit var binding: FragmentSearchPokemonBinding
-    private val epoxyController by lazy { PokemonSearchController() }
+    private val epoxyController by lazy { PokemonSearchController(this) }
     private val pokemonSearchViewModel: PokemonSearchViewModel by viewModel()
+    private val navController by lazy { findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,16 +41,21 @@ class SearchPokemonFragment: Fragment() {
                     epoxyController.setPokemonList(it.data.results)
                 }
                 else -> {
-
+                    println()
                 }
             }
         }
-
     }
 
     private fun setupEpoxyController() {
         binding.epoxyPokemonSearchFragment.apply {
             setController(epoxyController)
         }
+    }
+
+    override fun onPokemonCardClickListener(name: String) {
+        val direction = SearchPokemonFragmentDirections
+            .actionSearchPokemonFragmentToPokemonPageFragment(name)
+        navController.navigate(direction)
     }
 }

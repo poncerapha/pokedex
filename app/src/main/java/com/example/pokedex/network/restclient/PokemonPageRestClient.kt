@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface PokemonPageRestClient {
-    @GET("pokemon/{name}")
+    @GET("/api/v2/pokemon/{name}")
     suspend fun getPokemon(
         @Path("name") name: String
     ): Response<PokemonDTO>
