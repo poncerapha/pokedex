@@ -43,11 +43,7 @@ class PokemonSearchViewModel(
             }
             val url =
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
-            PokemonCard(entry.name.replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(
-                    Locale.ROOT
-                ) else it.toString()
-            }, url, number)
+            PokemonCard(entry.name.replaceFirstChar { it.toString() }, url, number)
         }
         return pokedexEntries
     }
