@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.pokedex.network.Response
 
 suspend fun <T> safeCall(call: suspend () -> retrofit2.Response<T>): Response<T> {
-    //TODO - Passar por parametro quem está chamando
     return try {
         call().formatResponse()
     } catch (e: Exception) {
@@ -12,7 +11,6 @@ suspend fun <T> safeCall(call: suspend () -> retrofit2.Response<T>): Response<T>
         Response.ErrorException(e)
     }
 }
-
 
 fun <T> retrofit2.Response<T>.formatResponse(): Response<T> {
     return if (isSuccessful) {

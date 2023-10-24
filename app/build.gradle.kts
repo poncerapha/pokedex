@@ -1,6 +1,11 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 android {
@@ -30,8 +35,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_7
+        targetCompatibility = JavaVersion.VERSION_1_7
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -54,6 +59,7 @@ dependencies {
     val navVersion = "2.7.4"
     val retrofitVersion = "2.9.0"
     val koinVersion = "3.5.0"
+    val epoxyVersion = "5.1.3"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -93,4 +99,8 @@ dependencies {
 
     //Koin
     implementation("io.insert-koin:koin-android:$koinVersion")
+
+    //Epoxy
+    implementation("com.airbnb.android:epoxy:$epoxyVersion")
+    kapt("com.airbnb.android:epoxy-processor:$epoxyVersion")
 }

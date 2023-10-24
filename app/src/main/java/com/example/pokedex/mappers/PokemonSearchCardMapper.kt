@@ -1,10 +1,13 @@
 package com.example.pokedex.mappers
 
-import com.example.pokedex.dto.PokemonSearchCardDTO
-import com.example.pokedex.models.PokemonSearchCard
+import com.example.pokedex.dto.PokemonSearchDTO
+import com.example.pokedex.models.PokemonSearch
 
-fun PokemonSearchCardDTO.toPokemonSearchModel(): PokemonSearchCard {
-    return PokemonSearchCard(
-        name = name
+fun PokemonSearchDTO.toPokemonSearchModel(): PokemonSearch {
+    return PokemonSearch(
+        count = count,
+        next = next,
+        previous = previous,
+        results = results.map { it.toPokemonSearchModel() }
     )
 }

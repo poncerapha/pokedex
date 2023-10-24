@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.pokedex.R
+import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
+import com.example.pokedex.network.UIState
+import com.example.pokedex.viewmodel.PokemonSearchViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchPokemonFragment : Fragment() {
-    lateinit var binding: FragmentSearchPokemonBinding
+class SearchPokemonFragment: Fragment() {
+    private lateinit var binding: FragmentSearchPokemonBinding
+    private val epoxyController by lazy { PokemonSearchController() }
+    private val pokemonSearchViewModel: PokemonSearchViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +29,24 @@ class SearchPokemonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.button.setOnClickListener {
-            val controller = findNavController()
-            controller.navigate(R.id.pokemonFragment)
+        setupEpoxyController()
+        pokemonSearchViewModel.getPokemonSearchList(150, 0)
+        pokemonSearchViewModel.pokemonSearchList.observe(viewLifecycleOwner) {
+            when(it) {
+                is UIState.Success -> {
+                    epoxyController.setPokemonList(it.data.results)
+                }
+                else -> {
+
+                }
+            }
+        }
+
+    }
+
+    private fun setupEpoxyController() {
+        binding.epoxyPokemonSearchFragment.apply {
+            setController(epoxyController)
         }
     }
 }

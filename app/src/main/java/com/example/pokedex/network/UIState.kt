@@ -1,6 +1,5 @@
 package com.example.pokedex.network
 
-
 sealed class UIState<T> {
     open class Success<T>(val data: T) : UIState<T>()
     open class Error<T>(val errorData: Result.Error? = null) : UIState<T>()

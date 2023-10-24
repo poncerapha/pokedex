@@ -1,6 +1,7 @@
 package com.example.pokedex.network
 
 import com.example.pokedex.network.restclient.PokemonPageRestClient
+import com.example.pokedex.network.restclient.PokemonSearchRestClient
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,6 +24,10 @@ class AppRetrofit {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+    val pokemonSearchRestClient: PokemonSearchRestClient by lazy {
+        retrofit.create(PokemonSearchRestClient::class.java)
+    }
+
     val pokemonPageRestClient: PokemonPageRestClient by lazy {
         retrofit.create(PokemonPageRestClient::class.java)
     }
