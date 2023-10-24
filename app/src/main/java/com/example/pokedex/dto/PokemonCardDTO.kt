@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class PokemonDTO(
-    @JsonProperty("name") val name: String,
-    @JsonProperty("sprites") val sprites: SpriteDTO
+data class PokemonCardDTO(
+    @JsonProperty("name") val name: String
 )

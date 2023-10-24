@@ -60,6 +60,7 @@ dependencies {
     val retrofitVersion = "2.9.0"
     val koinVersion = "3.5.0"
     val epoxyVersion = "5.1.3"
+    val shimmerVersion = "0.5.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -93,4 +94,11 @@ dependencies {
     //Epoxy
     implementation("com.airbnb.android:epoxy:$epoxyVersion")
     kapt("com.airbnb.android:epoxy-processor:$epoxyVersion")
+
+    //Shimmer
+    implementation("com.facebook.shimmer:shimmer:$shimmerVersion")
+
+    //coil
+    implementation("io.coil-kt:coil:2.4.0")
+    implementation("io.coil-kt:coil-svg:2.4.0")
 }

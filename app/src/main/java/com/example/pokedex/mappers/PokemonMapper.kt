@@ -3,8 +3,9 @@ package com.example.pokedex.mappers
 import com.example.pokedex.dto.PokemonDTO
 import com.example.pokedex.models.Pokemon
 
-fun PokemonDTO.toPokemonSearchModel(): Pokemon {
+fun PokemonDTO.toPokemonModel(): Pokemon {
     return Pokemon(
-        name = name
+        name = name,
+        sprites = sprites.toSpriteModel()
     )
 }

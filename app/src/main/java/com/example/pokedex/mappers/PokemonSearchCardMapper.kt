@@ -7,6 +7,6 @@ fun PokemonSearchDTO.toPokemonSearchModel(): PokemonSearch {
     return PokemonSearch(
         count = count,
         next = next,
-        results = results.map { it.toPokemonSearchModel() }
+        results = results.map { it.toPokemonCardModel() }
     )
 }
