@@ -53,6 +53,7 @@ android {
 dependencies {
     val navVersion = "2.7.4"
     val retrofitVersion = "2.9.0"
+    val koinVersion = "3.5.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -87,4 +88,7 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
+
+    //Koin
+    implementation("io.insert-koin:koin-android:$koinVersion")
 }

@@ -1,4 +1,6 @@
 package com.example.pokedex.viewmodel
 
-class PokemonPageViewModel {
+import androidx.lifecycle.ViewModel
+
+class PokemonPageViewModel: ViewModel() {
 }

@@ -1,4 +1,4 @@
 package com.example.pokedex.repository
 
-class PokemonPageRepositoryImpl {
+class PokemonPageRepositoryImpl: PokemonPageRepository {
 }
