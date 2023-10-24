@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.pokedex.R
 import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
 import com.example.pokedex.interfaces.PokemonSearchListener
@@ -38,7 +37,7 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         pokemonSearchViewModel.pokemonSearchList.observe(viewLifecycleOwner) {
             when(it) {
                 is UIState.Success -> {
-                    epoxyController.setPokemonList(it.data.results)
+                    epoxyController.setPokemonList(it.data)
                 }
                 else -> {
                     println()

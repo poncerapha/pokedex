@@ -15,6 +15,7 @@ class PokemonSearchController(
             pokemonCardHolder {
                 id("pokemon_card${it.name}")
                 pokemonName(it.name)
+                pokemonImageUrl(it.url)
                 onPokemonCardClickListener {
                     this@PokemonSearchController.pokemonSearchListener.onPokemonCardClickListener(it)
                 }

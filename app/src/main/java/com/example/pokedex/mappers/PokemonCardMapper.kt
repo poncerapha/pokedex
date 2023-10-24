@@ -5,6 +5,7 @@ import com.example.pokedex.models.PokemonCard
 
 fun PokemonCardDTO.toPokemonCardModel(): PokemonCard {
     return PokemonCard(
-        name = name
+        name = name,
+        url = url
     )
 }

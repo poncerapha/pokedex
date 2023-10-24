@@ -5,5 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class PokemonCardDTO(
-    @JsonProperty("name") val name: String
+    @JsonProperty("name") val name: String,
+    @JsonProperty("url") val url: String
 )
