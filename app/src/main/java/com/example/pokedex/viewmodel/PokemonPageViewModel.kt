@@ -13,7 +13,7 @@ class PokemonPageViewModel(
     private val _pokemon = MutableLiveData<Pokemon>()
     val pokemon get() = _pokemon
 
-    fun getPokemonSearchList(name: String) = viewModelScope.launch {
+    fun getPokemon(name: String) = viewModelScope.launch {
         pokemonPageRepository.getPokemon(
             name = name
         )

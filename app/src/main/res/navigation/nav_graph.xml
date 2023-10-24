@@ -17,6 +17,6 @@
         tools:layout="@layout/fragment_search_pokemon" />
     <fragment
         android:id="@+id/pokemonFragment"
-        android:name="com.example.pokedex.ui.fragments.PokemonFragment"
+        android:name="com.example.pokedex.ui.fragments.PokemonPageFragment"
         android:label="PokemonFragment" />
 </navigation>
