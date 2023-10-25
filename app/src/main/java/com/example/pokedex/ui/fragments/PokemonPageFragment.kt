@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import com.example.pokedex.controller.PokemonPageController
 import com.example.pokedex.databinding.FragmentPokemonPageBinding
@@ -43,6 +44,10 @@ class PokemonPageFragment : Fragment() {
             when(it) {
                 is UIState.Success -> {
                     epoxyController.setPokemon(it.data)
+                    binding.pokemonShimmer.root.isVisible = false
+                }
+                is UIState.Loading -> {
+                    binding.pokemonShimmer.root.isVisible = true
                 }
                 else -> {
                     
