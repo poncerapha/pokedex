@@ -30,19 +30,19 @@ git clone https://github.com/seu-usuario/pokedex-app.git
 
 O Koin é utilizado para gerenciar a injeção de dependência em todo o aplicativo. Ele permite a criação de módulos para fornecer e injetar dependências em componentes do Android, tornando o código mais limpo e desacoplado.
 
-Para saber mais sobre o Koin, visite [a documentação oficial](https://insert-link-here).
+Para saber mais sobre o Koin, visite [a documentação oficial](https://insert-koin.io/).
 
 ### Epoxy
 
 O Epoxy é uma biblioteca de criação de interfaces de usuário que facilita a construção de listas complexas e desempenho otimizado no Android. O aplicativo utiliza o Epoxy para criar exibições de lista personalizadas para exibir informações sobre Pokémon.
 
-Para saber mais sobre o Epoxy, visite [a documentação oficial](https://insert-link-here).
+Para saber mais sobre o Epoxy, visite [a documentação oficial](https://github.com/airbnb/epoxy).
 
 ### MockK
 
 O MockK é uma biblioteca Kotlin que auxilia na criação de objetos fictícios (mocks) para testes unitários e de integração. É amplamente utilizado no projeto para escrever testes de unidade e garantir a qualidade do código.
 
-Para saber mais sobre o MockK, visite [a documentação oficial](https://insert-link-here).
+Para saber mais sobre o MockK, visite [a documentação oficial](https://mockk.io/).
 
 ## Contribuição
 
