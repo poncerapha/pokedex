@@ -6,6 +6,8 @@ import com.example.pokedex.models.Pokemon
 fun PokemonDTO.toPokemonModel(): Pokemon {
     return Pokemon(
         name = name,
-        sprites = sprites.toSpriteModel()
+        sprites = sprites.toSpriteModel(),
+        height = height,
+        weight = weight
     )
 }

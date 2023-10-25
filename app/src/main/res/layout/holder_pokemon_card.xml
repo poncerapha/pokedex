@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="@color/pokemon_card_background"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp">
 

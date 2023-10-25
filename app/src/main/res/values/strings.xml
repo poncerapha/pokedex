@@ -2,4 +2,6 @@
     <string name="app_name">Pokedex</string>
     <string name="welcome_fragment">Hello welcome fragment</string>
     <string name="search_pokemon_fragment">Hello Search Pokemon fragment</string>
+    <string name="pokemon_height">Altura: %s</string>
+    <string name="pokemon_weight">Peso: %s</string>
 </resources>
