@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
 import com.example.pokedex.interfaces.PokemonSearchListener
-import com.example.pokedex.network.UIPagingState
-import com.example.pokedex.network.UIState
-import com.example.pokedex.network.data
+import com.example.pokedex.network.utils.UIPagingState
 import com.example.pokedex.viewmodel.PokemonSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

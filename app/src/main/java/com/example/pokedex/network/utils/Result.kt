@@ -1,4 +1,4 @@
-package com.example.pokedex.network
+package com.example.pokedex.network.utils
 
 sealed class Result<out R> {
     class Success<out T>(val data: T) : Result<T>()

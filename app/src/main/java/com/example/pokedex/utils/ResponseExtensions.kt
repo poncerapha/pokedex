@@ -1,7 +1,7 @@
 package com.example.pokedex.utils
 
 import android.util.Log
-import com.example.pokedex.network.Response
+import com.example.pokedex.network.utils.Response
 
 suspend fun <T> safeCall(call: suspend () -> retrofit2.Response<T>): Response<T> {
     return try {

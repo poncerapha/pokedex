@@ -2,7 +2,7 @@ package com.example.pokedex.network.remoteprovider
 
 import com.example.pokedex.dto.PokemonDTO
 import com.example.pokedex.network.AppRetrofit
-import com.example.pokedex.network.Response
+import com.example.pokedex.network.utils.Response
 import com.example.pokedex.network.restclient.PokemonPageRestClient
 import com.example.pokedex.utils.safeCall
 

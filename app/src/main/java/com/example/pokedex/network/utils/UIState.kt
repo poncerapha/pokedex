@@ -1,4 +1,4 @@
-package com.example.pokedex.network
+package com.example.pokedex.network.utils
 
 sealed class UIState<T> {
     open class Success<T>(val data: T) : UIState<T>()

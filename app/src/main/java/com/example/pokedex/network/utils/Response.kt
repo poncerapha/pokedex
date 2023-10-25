@@ -1,4 +1,4 @@
-package com.example.pokedex.network
+package com.example.pokedex.network.utils
 
 import com.example.pokedex.dto.ErrorBody
 import com.fasterxml.jackson.databind.JsonNode

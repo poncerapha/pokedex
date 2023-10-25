@@ -2,7 +2,7 @@ package com.example.pokedex.repository
 
 import com.example.pokedex.mappers.toPokemonModel
 import com.example.pokedex.models.Pokemon
-import com.example.pokedex.network.Result
+import com.example.pokedex.network.utils.Result
 import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProvider
 
 class PokemonPageRepositoryImpl(
