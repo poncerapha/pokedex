@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import com.example.pokedex.controller.PokemonPageController
 import com.example.pokedex.databinding.FragmentPokemonPageBinding
+import com.example.pokedex.models.Pokemon
 import com.example.pokedex.network.utils.UIState
 import com.example.pokedex.viewmodel.PokemonPageViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,17 +42,23 @@ class PokemonPageFragment : Fragment() {
 
         pokemonPageViewModel.getPokemon(pokemonName)
         pokemonPageViewModel.pokemon.observe(viewLifecycleOwner) {
-            when(it) {
-                is UIState.Success -> {
-                    epoxyController.setPokemon(it.data)
-                    binding.pokemonShimmer.root.isVisible = false
-                }
-                is UIState.Loading -> {
-                    binding.pokemonShimmer.root.isVisible = true
-                }
-                is UIState.Error -> {
-                    binding.pokemonShimmer.root.isVisible = false
-                }
+            handlePokemonStates(it)
+        }
+    }
+
+    private fun handlePokemonStates(it: UIState<Pokemon>) {
+        when (it) {
+            is UIState.Success -> {
+                epoxyController.setPokemon(it.data)
+                binding.pokemonShimmer.root.isVisible = false
+            }
+
+            is UIState.Loading -> {
+                binding.pokemonShimmer.root.isVisible = true
+            }
+
+            is UIState.Error -> {
+                binding.pokemonShimmer.root.isVisible = false
             }
         }
     }

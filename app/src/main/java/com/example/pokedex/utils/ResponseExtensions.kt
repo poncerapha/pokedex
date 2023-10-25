@@ -1,6 +1,5 @@
 package com.example.pokedex.utils
 
-import android.util.Log
 import com.example.pokedex.network.utils.Response
 import retrofit2.Response as Retrofit2Response
 

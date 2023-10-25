@@ -1,6 +1,5 @@
 package com.example.pokedex.controller
 
-import android.view.View
 import com.airbnb.epoxy.EpoxyController
 import com.example.pokedex.interfaces.EpoxyPaginatedControllerContract
 import com.example.pokedex.ui.viewholders.progressIndicatorHolder
