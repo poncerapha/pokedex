@@ -43,7 +43,11 @@ class PokemonSearchViewModel(
                 offset += POKEMON_SEARCH_LIMIT
             }
             .onError {
-                _pokemonSearchList.value = UIPagingState.Error()
+                _pokemonSearchList.value = if (isPaging) {
+                    UIPagingState.PagingError()
+                } else {
+                    UIPagingState.Error()
+                }
             }
     }
 

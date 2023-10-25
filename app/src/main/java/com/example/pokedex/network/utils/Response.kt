@@ -27,6 +27,7 @@ open class Response<T> {
         return when (this) {
             is Success -> Result.Success(mapper(requireNotNull(value)))
             is Error -> Result.Error(message = httpStatusMessage, statusCode = httpCode)
+            is ErrorException -> Result.Error(throwable = exception)
             else -> Result.Error()
         }
     }
