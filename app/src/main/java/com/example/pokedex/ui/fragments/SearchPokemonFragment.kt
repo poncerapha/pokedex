@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
 import com.example.pokedex.interfaces.PokemonSearchListener
+import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.network.utils.UIPagingState
 import com.example.pokedex.viewmodel.PokemonSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,22 +37,28 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         setupEpoxyController()
         pokemonSearchViewModel.getPokemonSearchList()
         pokemonSearchViewModel.pokemonSearchList.observe(viewLifecycleOwner) {
-            when(it) {
-                is UIPagingState.Success -> {
-                    epoxyController.updatePaginatedList(pokemonSearchViewModel.pokemonList)
-                    epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
-                }
-                is UIPagingState.PagingLoading, is UIPagingState.Loading -> {
-                    println()
-                }
+            handlePokemonCardStates(it)
+        }
+    }
 
-                is UIPagingState.Error -> {
-                    println()
-                }
+    private fun handlePokemonCardStates(it: UIPagingState<List<PokemonCard>>?) {
+        when (it) {
+            is UIPagingState.Success -> {
+                epoxyController.updatePaginatedList(pokemonSearchViewModel.pokemonList)
+                epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
+                binding.pokemonCardShimmer.root.isVisible = false
+            }
 
-                else -> {
-                    println()
-                }
+            is UIPagingState.Loading -> {
+                binding.pokemonCardShimmer.root.isVisible = true
+            }
+
+            is UIPagingState.Error -> {
+                println()
+            }
+
+            else -> {
+                println()
             }
         }
     }
@@ -69,6 +77,6 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
 
     override fun loadMore() {
         pokemonSearchViewModel.getPokemonSearchList()
-        epoxyController.isLoading = true
+        epoxyController.setLoading()
     }
 }

@@ -23,7 +23,6 @@ class PokemonSearchViewModel(
     val pokemonList: List<PokemonCard> get() = _pokemonList
 
     private var offset = INITIAL_OFFSET
-    private var limit = POKEMON_SEARCH_LIMIT
     private var pokedexTotalCount: Int = 0
 
     fun getPokemonSearchList() = viewModelScope.launch {
@@ -34,7 +33,7 @@ class PokemonSearchViewModel(
             UIPagingState.Loading()
         }
         pokemonSearchRepository.getPokemonList(
-            limit = limit,
+            limit = POKEMON_SEARCH_LIMIT,
             offset = offset
         )
             .onSuccess { pokemonSearch ->
@@ -42,7 +41,6 @@ class PokemonSearchViewModel(
                 _pokemonList.addAll(pokemonSearch.getPokemonImage())
                 _pokemonSearchList.value = UIPagingState.Success(pokemonSearch.results)
                 offset += POKEMON_SEARCH_LIMIT
-                limit += POKEMON_SEARCH_LIMIT
             }
             .onError {
                 _pokemonSearchList.value = UIPagingState.Error()
@@ -50,6 +48,6 @@ class PokemonSearchViewModel(
     }
 
     fun isLastPage(): Boolean {
-        return offset + POKEMON_SEARCH_LIMIT >= pokedexTotalCount
+        return offset + POKEMON_SEARCH_LIMIT >= 100
     }
 }

@@ -2,19 +2,17 @@ package com.example.pokedex.controller
 
 import android.view.View
 import com.airbnb.epoxy.EpoxyController
+import com.example.pokedex.interfaces.EpoxyPaginatedControllerContract
 import com.example.pokedex.ui.viewholders.progressIndicatorHolder
 
 abstract class BaseEpoxyPaginatedController<T>(
-    private var _contract: EpoxyPaginatedControllerContract? = null
+    private val _contract: EpoxyPaginatedControllerContract
 ) : EpoxyController() {
+    private val contract
+        get() = _contract
     private var items = mutableListOf<T>()
-    var isFirstLoadingBind = true
-    var isSpanCountChange = false
     protected var isLastPage: Boolean = false
-    var isLoading = false
-    protected val contract
-        get() = _contract!!
-
+    protected var isLoading = false
     private var hasRequestError = false
 
     protected fun renderPaginatedList() {
@@ -37,15 +35,10 @@ abstract class BaseEpoxyPaginatedController<T>(
                     if (this@BaseEpoxyPaginatedController.shouldLoadMore()) {
                         this@BaseEpoxyPaginatedController.contract.loadMore()
                     }
-                    this@BaseEpoxyPaginatedController.isSpanCountChange = false
-                    this@BaseEpoxyPaginatedController.isFirstLoadingBind = false
-                    this@BaseEpoxyPaginatedController.onBindProgressHolder(view)
                 }
             }
         }
     }
-
-    open fun onBindProgressHolder(binding: View) {}
 
     abstract fun shouldLoadMore(): Boolean
 
@@ -71,15 +64,5 @@ abstract class BaseEpoxyPaginatedController<T>(
         requestModelBuild()
     }
 
-    fun removeError() {
-        hasRequestError = false
-        requestModelBuild()
-    }
-
     fun getPaginatedList() = items
-
-    interface EpoxyPaginatedControllerContract {
-        fun loadMore()
-        fun onPaginatedListRetryButtonClick() {}
-    }
 }

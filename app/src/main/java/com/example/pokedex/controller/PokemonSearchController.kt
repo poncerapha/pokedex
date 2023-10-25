@@ -8,8 +8,6 @@ import com.example.pokedex.ui.viewholders.pokemonCardHolder
 class PokemonSearchController(
     private val pokemonSearchListener: PokemonSearchListener
 ): EpoxyPaginatedController<PokemonCard>(pokemonSearchListener) {
-    private var pokemonList: List<PokemonCard> = listOf()
-
     override fun renderPaginatedHolder(item: PokemonCard, index: Int) {
         pokemonCardHolder {
             id("pokemon_card${item.name}")

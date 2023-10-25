@@ -1,6 +1,10 @@
 package com.example.pokedex.controller
 
-abstract class EpoxyPaginatedController<T>(contract: EpoxyPaginatedControllerContract) : BaseEpoxyPaginatedController<T>(contract)  {
+import com.example.pokedex.interfaces.EpoxyPaginatedControllerContract
+
+abstract class EpoxyPaginatedController<T>(
+    contract: EpoxyPaginatedControllerContract
+): BaseEpoxyPaginatedController<T>(contract)  {
 
     override fun buildModels() {
         renderPaginatedList()
