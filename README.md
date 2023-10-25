@@ -1,3 +1,6 @@
+https://github.com/poncerapha/pokedex/assets/38406330/0d7ad315-3dee-472b-8986-39a249e01f6a
+
+
 # Pokédex App
 
 O Pokédex App é uma aplicação Android que permite aos usuários explorar informações sobre diferentes Pokémon. Ele utiliza as seguintes tecnologias principais: Koin, Epoxy e MockK.
