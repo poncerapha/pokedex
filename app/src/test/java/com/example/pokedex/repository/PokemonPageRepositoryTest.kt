@@ -2,14 +2,11 @@ package com.example.pokedex.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.pokedex.dto.PokemonDTO
-import com.example.pokedex.dto.PokemonSearchDTO
 import com.example.pokedex.models.Pokemon
-import com.example.pokedex.models.PokemonSearch
 import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProvider
-import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProvider
 import com.example.pokedex.network.utils.Response
 import com.example.pokedex.network.utils.Result
-import com.example.pokedex.utils.MainCoroutineRule
+import com.example.utils.MainCoroutineRule
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every

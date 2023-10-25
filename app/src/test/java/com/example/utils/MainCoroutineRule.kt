@@ -1,4 +1,4 @@
-package com.example.pokedex.utils
+package com.example.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

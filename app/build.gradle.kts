@@ -105,9 +105,9 @@ dependencies {
     implementation("io.coil-kt:coil-svg:2.4.0")
 
     //mockk
-    implementation("io.mockk:mockk-android:$mockkVersion")
-    implementation("io.mockk:mockk:$mockkVersion")
-    implementation("io.mockk:mockk-agent-jvm:$mockkVersion")
-    implementation("androidx.arch.core:core-testing:$androidxArchVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")
+    testImplementation("io.mockk:mockk-android:$mockkVersion")
+    testImplementation("androidx.arch.core:core-testing:$androidxArchVersion")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
 }

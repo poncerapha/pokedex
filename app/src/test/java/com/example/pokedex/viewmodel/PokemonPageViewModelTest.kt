@@ -2,17 +2,11 @@ package com.example.pokedex.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.pokedex.models.Pokemon
-import com.example.pokedex.models.PokemonCard
-import com.example.pokedex.models.PokemonSearch
 import com.example.pokedex.network.utils.Result
-import com.example.pokedex.network.utils.UIPagingState
 import com.example.pokedex.network.utils.UIState
 import com.example.pokedex.network.utils.data
 import com.example.pokedex.repository.PokemonPageRepository
-import com.example.pokedex.repository.PokemonSearchRepository
-import com.example.pokedex.repository.PokemonSearchRepositoryTest
-import com.example.pokedex.utils.MainCoroutineRule
-import com.example.pokedex.utils.getPokemonImage
+import com.example.utils.MainCoroutineRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -5,7 +5,7 @@ import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProviderImpl
 import com.example.pokedex.network.restclient.PokemonPageRestClient
 import com.example.utils.MockkStaticLog
 import com.example.pokedex.network.utils.Response
-import com.example.pokedex.utils.MainCoroutineRule
+import com.example.utils.MainCoroutineRule
 import com.example.pokedex.utils.formatResponse
 import com.example.pokedex.utils.safeCall
 import com.example.utils.MockkStaticRetrofit
@@ -28,8 +28,6 @@ class PokemonPageRemoteProviderTest {
 
     private val name = "name"
     private val pokemonPageRestClient = mockk<PokemonPageRestClient>()
-    private val limit: Int = 0
-    private val offset: Int = 0
     private val remoteProvider = PokemonPageRemoteProviderImpl(
         pokemonPageRestClient
     )

@@ -1,7 +1,7 @@
 package com.example.pokedex.network
 
 import com.example.pokedex.network.utils.Response.*
-import com.example.pokedex.utils.MainCoroutineRule
+import com.example.utils.MainCoroutineRule
 import com.example.pokedex.utils.formatResponse
 import com.example.pokedex.utils.safeCall
 import com.example.utils.MockkStaticLog.mockLog

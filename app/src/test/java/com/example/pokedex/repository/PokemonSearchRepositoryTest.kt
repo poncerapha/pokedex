@@ -1,6 +1,6 @@
 package com.example.pokedex.repository
 
-import com.example.pokedex.utils.MainCoroutineRule
+import com.example.utils.MainCoroutineRule
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.pokedex.dto.PokemonSearchDTO
 import com.example.pokedex.models.PokemonSearch

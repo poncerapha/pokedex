@@ -7,8 +7,7 @@ import com.example.pokedex.network.utils.Result
 import com.example.pokedex.network.utils.UIPagingState
 import com.example.pokedex.network.utils.data
 import com.example.pokedex.repository.PokemonSearchRepository
-import com.example.pokedex.repository.PokemonSearchRepositoryTest
-import com.example.pokedex.utils.MainCoroutineRule
+import com.example.utils.MainCoroutineRule
 import com.example.pokedex.utils.getPokemonImage
 import io.mockk.coEvery
 import io.mockk.mockk

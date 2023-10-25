@@ -5,7 +5,7 @@ import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProviderImp
 import com.example.pokedex.network.restclient.PokemonSearchRestClient
 import com.example.utils.MockkStaticLog
 import com.example.pokedex.network.utils.Response
-import com.example.pokedex.utils.MainCoroutineRule
+import com.example.utils.MainCoroutineRule
 import com.example.pokedex.utils.formatResponse
 import com.example.pokedex.utils.safeCall
 import com.example.utils.MockkStaticRetrofit
