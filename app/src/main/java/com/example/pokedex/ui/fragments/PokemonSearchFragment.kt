@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.pokedex.controller.PokemonSearchController
-import com.example.pokedex.databinding.FragmentSearchPokemonBinding
+import com.example.pokedex.databinding.FragmentPokemonSearchBinding
 import com.example.pokedex.interfaces.PokemonSearchListener
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.network.utils.UIPagingState
 import com.example.pokedex.viewmodel.PokemonSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchPokemonFragment: Fragment(), PokemonSearchListener {
-    private lateinit var binding: FragmentSearchPokemonBinding
+class PokemonSearchFragment: Fragment(), PokemonSearchListener {
+    private lateinit var binding: FragmentPokemonSearchBinding
     private val epoxyController by lazy { PokemonSearchController(this) }
     private val pokemonSearchViewModel: PokemonSearchViewModel by viewModel()
     private val navController by lazy { findNavController() }
@@ -27,7 +27,7 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentSearchPokemonBinding.inflate(inflater, container, false)
+        binding = FragmentPokemonSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,20 +41,28 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         }
     }
 
-    private fun handlePokemonCardStates(it: UIPagingState<List<PokemonCard>>?) {
+    private fun handlePokemonCardStates(it: UIPagingState<List<PokemonCard>>) {
         when (it) {
-            is UIPagingState.Success -> {
-                epoxyController.updatePaginatedList(pokemonSearchViewModel.pokemonList)
-                epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
-                binding.pokemonCardShimmer.root.isVisible = false
-            }
-            is UIPagingState.Loading -> {
-                binding.pokemonCardShimmer.root.isVisible = true
-            }
-            else -> {
-                epoxyController.setError()
-            }
+            is UIPagingState.Success -> processSuccessState()
+            is UIPagingState.Error, is UIPagingState.PagingError -> processErrorState()
+            is UIPagingState.PagingLoading, is UIPagingState.Loading -> processLoadingState()
         }
+    }
+
+    private fun processSuccessState() {
+        binding.pokemonCardShimmer.root.isVisible = false
+        binding.epoxyPokemonSearchFragment.isVisible = true
+        epoxyController.updatePaginatedList(pokemonSearchViewModel.pokemonList)
+        epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
+    }
+
+    private fun processErrorState() {
+        binding.pokemonCardShimmer.root.isVisible = false
+    }
+
+    private fun processLoadingState() {
+        binding.pokemonCardShimmer.root.isVisible = true
+        binding.epoxyPokemonSearchFragment.isVisible = false
     }
 
     private fun setupEpoxyController() {
@@ -64,7 +72,7 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
     }
 
     override fun onPokemonCardClickListener(name: String) {
-        val direction = SearchPokemonFragmentDirections
+        val direction = PokemonSearchFragmentDirections
             .actionSearchPokemonFragmentToPokemonPageFragment(name)
         navController.navigate(direction)
     }

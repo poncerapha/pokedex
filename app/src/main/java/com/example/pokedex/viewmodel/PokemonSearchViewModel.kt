@@ -48,6 +48,6 @@ class PokemonSearchViewModel(
     }
 
     fun isLastPage(): Boolean {
-        return offset + POKEMON_SEARCH_LIMIT >= pokedexTotalCount
+        return offset + POKEMON_SEARCH_LIMIT >= 100
     }
 }

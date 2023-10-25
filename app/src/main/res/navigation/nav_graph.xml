@@ -20,9 +20,9 @@
 <!--    </fragment>-->
     <fragment
         android:id="@+id/searchPokemonFragment"
-        android:name="com.example.pokedex.ui.fragments.SearchPokemonFragment"
+        android:name="com.example.pokedex.ui.fragments.PokemonSearchFragment"
         android:label="fragment_search_pokemon"
-        tools:layout="@layout/fragment_search_pokemon" >
+        tools:layout="@layout/fragment_pokemon_search" >
         <action
             android:id="@+id/action_searchPokemonFragment_to_pokemonPageFragment"
             app:destination="@id/pokemonPageFragment"

@@ -49,8 +49,8 @@ class PokemonPageFragment : Fragment() {
                 is UIState.Loading -> {
                     binding.pokemonShimmer.root.isVisible = true
                 }
-                else -> {
-                    throw RuntimeException("error na request")
+                is UIState.Error -> {
+                    binding.pokemonShimmer.root.isVisible = false
                 }
             }
         }
