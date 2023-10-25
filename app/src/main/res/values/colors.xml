@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pokemon_card_background">#D4D4D4</color>
     <color name="pokemon_card_info">#D4D4D4</color>
+    <color name="pokemon_moves_background">#D4D4D4</color>
     <color name="pokemon_card_placeholder_color">#AAAAAA</color>
     <color name="pokemon_text_info">#404040</color>
 </resources>

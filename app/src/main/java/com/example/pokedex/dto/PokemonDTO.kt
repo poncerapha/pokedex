@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class PokemonDTO(
     @JsonProperty("name") val name: String,
     @JsonProperty("sprites") val sprites: SpriteDTO,
+    @JsonProperty("moves") val moves: List<MovesDTO>,
     @JsonProperty("height") val height: Int,
     @JsonProperty("weight") val weight: Int
 )

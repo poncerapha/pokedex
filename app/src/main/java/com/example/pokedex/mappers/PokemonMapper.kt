@@ -7,6 +7,7 @@ fun PokemonDTO.toPokemonModel(): Pokemon {
     return Pokemon(
         name = name,
         sprites = sprites.toSpriteModel(),
+        moves = moves.map { it.toMovesModel() },
         height = height,
         weight = weight
     )
