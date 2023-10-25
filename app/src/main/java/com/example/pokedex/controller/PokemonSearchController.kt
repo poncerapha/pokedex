@@ -7,23 +7,19 @@ import com.example.pokedex.ui.viewholders.pokemonCardHolder
 
 class PokemonSearchController(
     private val pokemonSearchListener: PokemonSearchListener
-): EpoxyController() {
+): EpoxyPaginatedController<PokemonCard>(pokemonSearchListener) {
     private var pokemonList: List<PokemonCard> = listOf()
-    override fun buildModels() {
-        pokemonList.forEach {
-            pokemonCardHolder {
-                id("pokemon_card${it.name}")
-                pokemonName(it.name)
-                pokemonImageUrl(it.url)
-                onPokemonCardClickListener {
-                    this@PokemonSearchController.pokemonSearchListener.onPokemonCardClickListener(it)
-                }
+
+    override fun renderPaginatedHolder(item: PokemonCard, index: Int) {
+        pokemonCardHolder {
+            id("pokemon_card${item.name}")
+            pokemonName(item.name)
+            pokemonImageUrl(item.url)
+            onPokemonCardClickListener {
+                this@PokemonSearchController.pokemonSearchListener.onPokemonCardClickListener(it)
             }
         }
     }
 
-    fun setPokemonList(pokemonList: List<PokemonCard>) {
-        this.pokemonList = pokemonList
-        requestModelBuild()
-    }
+    override fun shouldLoadMore(): Boolean = !isLastPage
 }

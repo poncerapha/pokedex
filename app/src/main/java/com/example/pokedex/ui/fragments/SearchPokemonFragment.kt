@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.pokedex.controller.PokemonSearchController
 import com.example.pokedex.databinding.FragmentSearchPokemonBinding
 import com.example.pokedex.interfaces.PokemonSearchListener
+import com.example.pokedex.network.UIPagingState
 import com.example.pokedex.network.UIState
+import com.example.pokedex.network.data
 import com.example.pokedex.viewmodel.PokemonSearchViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,13 +39,18 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         pokemonSearchViewModel.getPokemonSearchList()
         pokemonSearchViewModel.pokemonSearchList.observe(viewLifecycleOwner) {
             when(it) {
-                is UIState.Success -> {
-                    binding.pokemonCardShimmer.root.isVisible = false
-                    epoxyController.setPokemonList(it.data)
+                is UIPagingState.Success -> {
+                    epoxyController.updatePaginatedList(pokemonSearchViewModel.pokemonList)
+                    epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
                 }
-                is UIState.Loading -> {
-                    binding.pokemonCardShimmer.root.isVisible = true
+                is UIPagingState.PagingLoading, is UIPagingState.Loading -> {
+                    println()
                 }
+
+                is UIPagingState.Error -> {
+                    println()
+                }
+
                 else -> {
                     println()
                 }
@@ -61,5 +68,10 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
         val direction = SearchPokemonFragmentDirections
             .actionSearchPokemonFragmentToPokemonPageFragment(name)
         navController.navigate(direction)
+    }
+
+    override fun loadMore() {
+        pokemonSearchViewModel.getPokemonSearchList()
+        epoxyController.isLoading = true
     }
 }
