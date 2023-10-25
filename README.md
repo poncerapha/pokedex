@@ -17,7 +17,7 @@ Siga as etapas abaixo para configurar o projeto em sua máquina:
 1. Clone este repositório:
 
 ```bash
-$ git clone https://github.com/poncerapha/pokedex.git && cd pokedex
+$ git clone https://github.com/poncerapha/pokedex.git
 ```
 
 2. Abra o projeto no Android Studio.
