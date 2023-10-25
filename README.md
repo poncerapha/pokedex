@@ -1,19 +1,17 @@
-https://github.com/poncerapha/pokedex/assets/38406330/0d7ad315-3dee-472b-8986-39a249e01f6a
 
-
-# Pokédex App
+# 📱 Pokédex App
 
 O Pokédex App é uma aplicação Android que permite aos usuários explorar informações sobre diferentes Pokémon. Ele utiliza as seguintes tecnologias principais: Koin, Epoxy e MockK.
 
-## Pré-requisitos
+## 📝 Pré-requisitos
 
 Antes de começar a trabalhar com o projeto, certifique-se de ter o seguinte instalado em seu ambiente de desenvolvimento:
 
-- Android Studio
-- Kotlin
-- Gradle
+- `Android Studio`
+- `Kotlin`
+- `Gradle`
 
-## Configuração
+## ⚙️ Configuração
 
 Siga as etapas abaixo para configurar o projeto em sua máquina:
 
@@ -29,7 +27,7 @@ $ git clone https://github.com/poncerapha/pokedex.git
 
 4. Compile o projeto e instale-o em um emulador ou dispositivo Android.
 
-## Tecnologias Principais
+## 👨‍💻 Tecnologias Principais
 
 ### Koin
 
@@ -49,7 +47,11 @@ O MockK é uma biblioteca Kotlin que auxilia na criação de objetos fictícios 
 
 Para saber mais sobre o MockK, visite [a documentação oficial](https://mockk.io/).
 
-## Futuras Melhorias
+## 📲 Resultado Final
+
+<center>https://github.com/poncerapha/pokedex/assets/38406330/0d7ad315-3dee-472b-8986-39a249e01f6a</center>
+
+## ⚡ Futuras Melhorias
 
 ### Jetpack Compose
 
@@ -75,6 +77,6 @@ Espresso é uma estrutura de teste automatizado desenvolvida pelo Google para te
 
 Para saber mais sobre o Espresso, visite [a documentação oficial](https://developer.android.com/training/testing/espresso).
 
-## Contribuição
+## 💼 Contribuição
 
 Se você deseja contribuir para o projeto, sinta-se à vontade para abrir problemas (issues) e enviar solicitações de pull (pull requests) para melhorias e correções. Certifique-se de seguir as diretrizes de contribuição do projeto.
