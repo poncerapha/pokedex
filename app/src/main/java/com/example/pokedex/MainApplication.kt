@@ -10,5 +10,12 @@ import com.example.pokedex.utils.KoinUtils
 class MainApplication: Application() {
     override fun onCreate() {
         super.onCreate()
+        KoinUtils.apply {
+            createInstance(this@MainApplication)
+            addModules(*PokemonSearchDependencyInjectionModules.modules)
+            addModules(*PokemonPageDependencyInjectionModules.modules)
+            addModules(*PokemonPageRemoteProviderDependencyInjectionModules.modules)
+            addModules(*PokemonSearchRemoteProviderDependencyInjectionModules.modules)
+        }
     }
 }

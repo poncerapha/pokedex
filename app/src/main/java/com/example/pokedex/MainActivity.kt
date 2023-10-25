@@ -12,12 +12,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        KoinUtils.apply {
-            createInstance(this@MainActivity)
-            addModules(*PokemonSearchDependencyInjectionModules.modules)
-            addModules(*PokemonPageDependencyInjectionModules.modules)
-            addModules(*PokemonPageRemoteProviderDependencyInjectionModules.modules)
-            addModules(*PokemonSearchRemoteProviderDependencyInjectionModules.modules)
-        }
     }
 }
