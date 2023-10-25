@@ -1,15 +1,3 @@
-<p align="center">
-  <img alt="Pokedex logo" src=".github/logo.svg" width="400px" />
-</p>
-
-<p align="center" fontSize="60px">
-  Pokédex
-</p>
-
-<p align="center">
-  <img alt="Layout da aplicação" width="100%" src="./.github/screenshot.png" />
-</p>
-
 # Pokédex App
 
 O Pokédex App é uma aplicação Android que permite aos usuários explorar informações sobre diferentes Pokémon. Ele utiliza as seguintes tecnologias principais: Koin, Epoxy e MockK.
