@@ -16,7 +16,7 @@ class PokemonPageController: EpoxyController() {
                 id("pokemon_${pokemon.name}")
                 pokemon(pokemon)
             }
-            
+
             group {
                 id("pokemon_move_group${pokemon.name}")
                 layout(R.layout.group_pokemon_move)

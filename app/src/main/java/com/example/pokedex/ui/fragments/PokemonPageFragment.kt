@@ -50,7 +50,7 @@ class PokemonPageFragment : Fragment() {
                     binding.pokemonShimmer.root.isVisible = true
                 }
                 else -> {
-                    
+                    throw RuntimeException("error na request")
                 }
             }
         }
