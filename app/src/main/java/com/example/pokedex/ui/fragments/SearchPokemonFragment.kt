@@ -48,17 +48,11 @@ class SearchPokemonFragment: Fragment(), PokemonSearchListener {
                 epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
                 binding.pokemonCardShimmer.root.isVisible = false
             }
-
             is UIPagingState.Loading -> {
                 binding.pokemonCardShimmer.root.isVisible = true
             }
-
-            is UIPagingState.Error -> {
-                println()
-            }
-
             else -> {
-                println()
+                epoxyController.setError()
             }
         }
     }

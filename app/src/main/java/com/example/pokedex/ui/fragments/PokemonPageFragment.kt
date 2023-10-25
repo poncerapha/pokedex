@@ -45,7 +45,7 @@ class PokemonPageFragment : Fragment() {
                     epoxyController.setPokemon(it.data)
                 }
                 else -> {
-
+                    
                 }
             }
         }
