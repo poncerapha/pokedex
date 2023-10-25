@@ -51,7 +51,6 @@ class PokemonSearchFragment: Fragment(), PokemonSearchListener {
 
     private fun processSuccessState() {
         binding.pokemonCardShimmer.root.isVisible = false
-        binding.epoxyPokemonSearchFragment.isVisible = true
         epoxyController.updatePaginatedList(pokemonSearchViewModel.pokemonList)
         epoxyController.setIsLastPage(pokemonSearchViewModel.isLastPage())
     }
@@ -62,7 +61,6 @@ class PokemonSearchFragment: Fragment(), PokemonSearchListener {
 
     private fun processLoadingState() {
         binding.pokemonCardShimmer.root.isVisible = true
-        binding.epoxyPokemonSearchFragment.isVisible = false
     }
 
     private fun setupEpoxyController() {
