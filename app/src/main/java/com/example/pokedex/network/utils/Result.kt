@@ -1,6 +1,6 @@
 package com.example.pokedex.network.utils
 
-sealed class Result<out R> {
+open class Result<out R> {
     class Success<out T>(val data: T) : Result<T>()
     open class Error(
         val message: String? = null,

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import retrofit2.Response as RetrofitResponse
 
-sealed class Response<T> {
+open class Response<T> {
     class Success<T>(private val response: RetrofitResponse<T>) : Response<T>() {
         val value get() = response.body()
     }
@@ -27,7 +27,7 @@ sealed class Response<T> {
         return when (this) {
             is Success -> Result.Success(mapper(requireNotNull(value)))
             is Error -> Result.Error(message = httpStatusMessage, statusCode = httpCode)
-            is ErrorException -> Result.Error(throwable = exception)
+            else -> Result.Error()
         }
     }
 

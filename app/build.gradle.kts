@@ -61,6 +61,8 @@ dependencies {
     val koinVersion = "3.5.0"
     val epoxyVersion = "5.1.3"
     val shimmerVersion = "0.5.0"
+    val mockkVersion = "1.12.4"
+    val androidxArchVersion = "2.1.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -101,4 +103,11 @@ dependencies {
     //coil
     implementation("io.coil-kt:coil:2.4.0")
     implementation("io.coil-kt:coil-svg:2.4.0")
+
+    //mockk
+    implementation("io.mockk:mockk-android:$mockkVersion")
+    implementation("io.mockk:mockk:$mockkVersion")
+    implementation("io.mockk:mockk-agent-jvm:$mockkVersion")
+    implementation("androidx.arch.core:core-testing:$androidxArchVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
 }
