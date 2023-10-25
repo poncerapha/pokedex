@@ -42,7 +42,7 @@ class PokemonSearchRepositoryTest {
     }
 
     @Test
-    fun getTechnicalInfo_onSuccess_returnResultSuccess() = runTest {
+    fun getPokemonSearchList_onSuccess_returnResultSuccess() = runTest {
         val fakePokemonSearch: PokemonSearch = mockk()
         val fakeRetrofitResponse: Response.Success<PokemonSearchDTO> = mockk {
             every { toResult<PokemonSearch>(any()) } returns Success(fakePokemonSearch)
