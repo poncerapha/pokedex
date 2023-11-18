@@ -2,7 +2,7 @@ package com.example.pokedex.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.pokedex.dto.PokemonDTO
-import com.example.pokedex.models.Pokemon
+import com.example.pokedex.models.PokemonUiState
 import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProvider
 import com.example.pokedex.network.utils.Response
 import com.example.pokedex.network.utils.Result
@@ -19,7 +19,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class PokemonPageRepositoryTest {
+class PokemonUiStatePageRepositoryTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
@@ -41,9 +41,9 @@ class PokemonPageRepositoryTest {
 
     @Test
     fun getPokemon_onSuccess_returnResultSuccess() = runTest {
-        val fakePokemon: Pokemon = mockk()
+        val fakePokemon: PokemonUiState = mockk()
         val fakeRetrofitResponse: Response.Success<PokemonDTO> = mockk {
-            every { toResult<Pokemon>(any()) } returns Result.Success(fakePokemon)
+            every { toResult<PokemonUiState>(any()) } returns Result.Success(fakePokemon)
         }
 
         coEvery { pokemonPageRemoteProvider.getPokemon(

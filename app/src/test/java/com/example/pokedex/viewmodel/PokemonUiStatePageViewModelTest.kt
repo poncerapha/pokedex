@@ -1,7 +1,7 @@
 package com.example.pokedex.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.pokedex.models.Pokemon
+import com.example.pokedex.models.PokemonUiState
 import com.example.pokedex.network.utils.Result
 import com.example.pokedex.network.utils.UIState
 import com.example.pokedex.network.utils.data
@@ -17,7 +17,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class PokemonPageViewModelTest {
+class PokemonUiStatePageViewModelTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
@@ -39,7 +39,7 @@ class PokemonPageViewModelTest {
 
     @Test
     fun fetchPokemon_onSuccess_updateLiveData() = runTest {
-        val fakeResult = Pokemon(
+        val fakeResult = PokemonUiState(
             name = name,
             sprites = mockk()
         )

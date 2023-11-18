@@ -20,7 +20,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class PokemonSearchRepositoryTest {
+class PokemonUiStateSearchRepositoryTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
