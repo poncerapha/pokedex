@@ -13,7 +13,7 @@ fun NavGraphBuilder.pokemonListGraph(
     navController: NavController
 ) {
     composable(
-        route = DestinationsPokedex.PokemonListScreen.route
+        route = DestinationsPokedex.PokemonSearchScreen.route
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),

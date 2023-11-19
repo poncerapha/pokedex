@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -32,17 +34,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
+    }
+    kapt {
+        correctErrorTypes = true
     }
     packaging {
         resources {
@@ -54,7 +59,6 @@ android {
 dependencies {
     val navVersion = "2.7.5"
     val retrofitVersion = "2.9.0"
-    val koinVersion = "3.5.0"
     val shimmerVersion = "0.5.0"
     val mockkVersion = "1.12.4"
     val androidxArchVersion = "2.1.0"
@@ -70,7 +74,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
-    implementation("io.coil-kt:coil-compose:2.5.0")
+    implementation ("androidx.compose.material:material-icons-core:1.5.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -78,18 +82,21 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //Coil
     implementation("io.coil-kt:coil-svg:2.5.0")
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-jackson:$retrofitVersion")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
-    //Koin
-    implementation("io.insert-koin:koin-core:$koinVersion")
-    implementation("io.insert-koin:koin-android:$koinVersion")
-    implementation("io.insert-koin:koin-androidx-compose:3.5.0")
+    //Hilt
+    implementation ("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     //Shimmer
     implementation("com.facebook.shimmer:shimmer:$shimmerVersion")
@@ -100,4 +107,11 @@ dependencies {
     testImplementation("io.mockk:mockk-android:$mockkVersion")
     testImplementation("androidx.arch.core:core-testing:$androidxArchVersion")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
+
+    // Coroutine Lifecycle Scopes
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    //Palette
+    implementation("androidx.palette:palette-ktx:1.0.0")
 }

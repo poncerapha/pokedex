@@ -11,9 +11,12 @@ import com.example.pokedex.network.utils.onError
 import com.example.pokedex.network.utils.onSuccess
 import com.example.pokedex.repository.PokemonSearchRepository
 import com.example.pokedex.utils.getPokemonImage
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.launch
 
-class PokemonSearchViewModel(
+@HiltViewModel
+class PokemonSearchViewModel @Inject constructor(
     private val pokemonSearchRepository: PokemonSearchRepository
 ): ViewModel() {
     private val _pokemonSearchList = MutableLiveData<UIPagingState<List<PokemonCard>>>()
