@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -114,4 +112,7 @@ dependencies {
 
     //Palette
     implementation("androidx.palette:palette-ktx:1.0.0")
+
+    //Paging3
+    implementation("androidx.paging:paging-compose:3.3.0-alpha02")
 }
