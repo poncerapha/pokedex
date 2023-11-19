@@ -21,14 +21,29 @@ class PokemonSearchViewModel @Inject constructor(
     val uiState get() = _uiState
 
     init {
-        getPokemonList(10, 0)
+        getPokemonList(20, 0)
     }
 
     private fun getPokemonList(limit: Int, offset: Int) {
         viewModelScope.launch {
             pokemonSearchRepository.getPokemonList(limit, offset)
                 .onSuccess {
-                    _uiState.value = UIState.Success(it.results)
+
+                    val pokemonItems = it.results.mapIndexed { index, pokemonCard ->
+                        val number = if (pokemonCard.url.endsWith("/")) {
+                            pokemonCard.url.dropLast(1).takeLastWhile { it.isDigit() }
+                        } else {
+                            pokemonCard.url.takeLastWhile { it.isDigit() }
+                        }
+
+                        val url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${number}.svg"
+                        PokemonCard(
+                            pokemonCard.name,
+                            url,
+                            number.toInt()
+                        )
+                    }
+                    _uiState.value = UIState.Success(pokemonItems)
                 }
         }
     }

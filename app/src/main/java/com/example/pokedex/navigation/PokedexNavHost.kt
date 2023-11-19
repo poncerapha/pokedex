@@ -12,7 +12,7 @@ fun PokedexNavHost(navController: NavHostController) {
         startDestination = PokemonSearchScreen.route
     ) {
         splashGraph(navController)
-        pokemonListGraph(navController)
+        pokemonListGraph()
         pokemonPageGraph(navController)
     }
 }
