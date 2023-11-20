@@ -1,19 +1,25 @@
 package com.example.pokedex.repository
 
-import com.example.pokedex.mappers.toPokemonSearchModel
-import com.example.pokedex.models.PokemonSearch
-import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProvider
-import com.example.pokedex.network.utils.Result
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.example.pokedex.data.PokemonSearchPagingSource
+import com.example.pokedex.models.PokemonCard
+import com.example.pokedex.network.restclient.PokemonSearchRestClient
+import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
-class PokemonSearchRepositoryImpl(
-    private val pokemonSearchRemoteProvider: PokemonSearchRemoteProvider
+class PokemonSearchRepositoryImpl @Inject constructor(
+    private val pokemonSearchRestClient: PokemonSearchRestClient
 ): PokemonSearchRepository {
-    override suspend fun getPokemonList(
-        limit: Int, offset: Int)
-        : Result<PokemonSearch> {
-        return pokemonSearchRemoteProvider.getPokemonList(
-            limit = limit,
-            offset = offset
-        ).toResult { it.toPokemonSearchModel() }
+    override fun getPokemonList(): Flow<PagingData<PokemonCard>> {
+        return Pager(
+            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
+            pagingSourceFactory = { PokemonSearchPagingSource(pokemonSearchRestClient) }
+        ).flow
+    }
+
+    companion object {
+        private const val NETWORK_PAGE_SIZE = 20
     }
 }

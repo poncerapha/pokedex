@@ -17,7 +17,7 @@ fun PokemonSearch.getPokemonImage(): List<PokemonCard> {
         }
         val url =
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${number}.png"
-        PokemonCard(entry.name.replaceFirstChar { it.toString() }, url, number.toInt())
+        PokemonCard(entry.name.replaceFirstChar { it.toString() }, url)
     }
     return pokedexEntries
 }

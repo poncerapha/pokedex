@@ -2,8 +2,6 @@ package com.example.pokedex.di.modules
 
 import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProvider
 import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProviderImpl
-import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProvider
-import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProviderImpl
 import com.example.pokedex.network.restclient.PokemonPageRestClient
 import com.example.pokedex.network.restclient.PokemonSearchRestClient
 import com.example.pokedex.repository.PokemonPageRepository
@@ -20,20 +18,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun providePokemonSearchRemoteProvider(
-        pokemonSearchRestClient: PokemonSearchRestClient
-    ): PokemonSearchRemoteProvider {
-        return PokemonSearchRemoteProviderImpl(pokemonSearchRestClient)
-    }
+//    @Provides
+//    @Singleton
+//    fun providePokemonSearchRemoteProvider(
+//        pokemonSearchRestClient: PokemonSearchRestClient
+//    ): PokemonSearchRemoteProvider {
+//        return PokemonSearchRemoteProviderImpl(pokemonSearchRestClient)
+//    }
 
     @Provides
     @Singleton
     fun providePokemonSearchRepository(
-        pokemonSearchRemoteProvider: PokemonSearchRemoteProvider
+        pokemonSearchRestClient: PokemonSearchRestClient
     ): PokemonSearchRepository {
-        return PokemonSearchRepositoryImpl(pokemonSearchRemoteProvider)
+        return PokemonSearchRepositoryImpl(pokemonSearchRestClient)
     }
 
     @Provides
