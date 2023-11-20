@@ -18,7 +18,7 @@ fun NavGraphBuilder.pokemonSearchScreen(
         val viewModel = hiltViewModel<PokemonSearchViewModel>()
 
         PokemonSearchScreen(
-            pokemonList = viewModel.pokemonList,
+            pokemonList = viewModel.pokemonListState,
             onPokemonCardClick = onNavigateToPokemonPage
         )
     }

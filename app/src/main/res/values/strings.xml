@@ -4,4 +4,6 @@
     <string name="search_pokemon_fragment">Hello Search Pokemon fragment</string>
     <string name="pokemon_height">Altura: %s</string>
     <string name="pokemon_weight">Peso: %s</string>
+    <string name="buttonRetry">tente novamente</string>
+    <string name="strFetchingDataFromServer">Fetching data from server</string>
 </resources>

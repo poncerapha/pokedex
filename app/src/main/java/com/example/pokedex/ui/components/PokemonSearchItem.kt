@@ -36,7 +36,8 @@ import com.example.pokedex.utils.calcDominantColor
 @Composable
 fun PokemonSearchItem(
     pokemonCard: PokemonCard,
-    onPokemonCardClick: (pokemonName: String) -> Unit = {}
+    onPokemonCardClick: (pokemonName: String) -> Unit = {},
+    pokemonIndex: Int
 ) {
     val defaultDominantColor = MaterialTheme.colorScheme.surface
     var dominantColor by remember {
@@ -71,7 +72,7 @@ fun PokemonSearchItem(
             Spacer(modifier = Modifier.size(8.dp))
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(pokemonCard.url)
+                    .data("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonIndex}.svg")
                     .decoderFactory(SvgDecoder.Factory()).build(),
                 contentDescription = "pokemonImage",
                 modifier = Modifier

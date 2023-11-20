@@ -2,7 +2,6 @@ package com.example.pokedex.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.pokedex.dto.PokemonCardDTO
 import com.example.pokedex.mappers.toPokemonCardModel
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.network.restclient.PokemonSearchRestClient
@@ -25,18 +24,13 @@ class PokemonSearchPagingSource(
                 } else {
                     position * POKEMON_OFFSET
                 }
-            ).body()
-            val pokemons = response?.results?.mapIndexed { index, pokemonCardDTO ->
-                val number = index + 1
-                val url =
-                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${number}.svg"
-                PokemonCardDTO(
-                    pokemonCardDTO.name,
-                    url
-                ).toPokemonCardModel()
+            )
+            val pokemons = mutableListOf<PokemonCard>()
+            response.results.mapIndexed { index, pokemonCardDTO ->
+                pokemons.add(pokemonCardDTO.toPokemonCardModel())
             }
             LoadResult.Page(
-                data = pokemons!!,
+                data = pokemons,
                 prevKey = if (position == 0) null else position,
                 nextKey = if (position == LAST_POSITION) null else position + 1
             )

@@ -19,11 +19,15 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.pokedex.R
 import com.example.pokedex.models.PokemonCard
+import com.example.pokedex.ui.components.ErrorMessage
+import com.example.pokedex.ui.components.LoadingNextPageItem
+import com.example.pokedex.ui.components.PageLoader
 import com.example.pokedex.ui.components.PokemonSearchItem
 import kotlinx.coroutines.flow.Flow
 
@@ -65,17 +69,46 @@ fun PokemonSearchScreen(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(
-                    count = pagingItems.itemCount,
-                    key = { index ->
-                        val pokemon = pagingItems[index]
-                        "${pokemon?.name ?: ""}${index}"
-                    }
+                    count = pagingItems.itemCount
                 ) { index ->
-                    val pokemon = pagingItems[index] ?: return@items
+                    val pokemon = pagingItems[index]!!
                     PokemonSearchItem(
                         pokemonCard = pokemon,
+                        pokemonIndex = index + 1,
                         onPokemonCardClick = onPokemonCardClick
                     )
+                }
+
+                pagingItems.apply {
+                    when {
+                        loadState.refresh is LoadState.Loading -> {
+                            item { PageLoader(modifier = Modifier.fillMaxSize()) }
+                        }
+
+                        loadState.refresh is LoadState.Error -> {
+                            val error = pagingItems.loadState.refresh as LoadState.Error
+                            item {
+                                ErrorMessage(
+                                    modifier = Modifier.fillMaxSize(),
+                                    message = error.error.localizedMessage!!,
+                                    onClickRetry = { retry() })
+                            }
+                        }
+
+                        loadState.append is LoadState.Loading -> {
+                            item { LoadingNextPageItem(modifier = Modifier) }
+                        }
+
+                        loadState.append is LoadState.Error -> {
+                            val error = pagingItems.loadState.append as LoadState.Error
+                            item {
+                                ErrorMessage(
+                                    modifier = Modifier,
+                                    message = error.error.localizedMessage!!,
+                                    onClickRetry = { retry() })
+                            }
+                        }
+                    }
                 }
             }
         }
