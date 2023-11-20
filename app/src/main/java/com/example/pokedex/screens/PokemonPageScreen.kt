@@ -24,7 +24,6 @@ import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.pokedex.R
-import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.models.PokemonUiState
 
 @Composable
@@ -52,7 +51,7 @@ fun PokemonPageScreen(
                 Text(
                     text = "#001",
                     fontSize = 20.sp,
-                    fontWeight = FontWeight(500)
+                    fontWeight = FontWeight(500),
                 )
             }
             Row(
@@ -71,7 +70,7 @@ fun PokemonPageScreen(
                     model = ImageRequest.Builder(LocalContext.current)
                         .data(state.sprites?.others?.dreamWorld?.frontDefault)
                         .decoderFactory(SvgDecoder.Factory()).build(),
-                    contentDescription = null,
+                    contentDescription = "pokemonImage",
                     Modifier
                         .width(150.dp)
                         .height(150.dp),
