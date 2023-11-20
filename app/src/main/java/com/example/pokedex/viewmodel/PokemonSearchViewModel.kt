@@ -21,7 +21,7 @@ class PokemonSearchViewModel @Inject constructor(
     val uiState get() = _uiState
 
     init {
-        getPokemonList(20, 0)
+        getPokemonList(151, 0)
     }
 
     private fun getPokemonList(limit: Int, offset: Int) {

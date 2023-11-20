@@ -45,7 +45,8 @@ import com.example.pokedex.ui.components.PokemonSearchItem
 @ExperimentalMaterial3Api
 @Composable
 fun PokemonSearchScreen(
-    uiState: UIState<List<PokemonCard>>
+    uiState: UIState<List<PokemonCard>>,
+    onPokemonCardClick: (pokemonName: String) -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -111,7 +112,7 @@ fun PokemonSearchScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         items(uiState.data) {
-                            PokemonSearchItem(it)
+                            PokemonSearchItem(it, onPokemonCardClick)
                         }
                     }
                 }

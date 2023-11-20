@@ -2,6 +2,7 @@ package com.example.pokedex.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -34,7 +35,8 @@ import com.example.pokedex.utils.calcDominantColor
 
 @Composable
 fun PokemonSearchItem(
-    pokemonCard: PokemonCard
+    pokemonCard: PokemonCard,
+    onPokemonCardClick: (pokemonName: String) -> Unit = {}
 ) {
     val defaultDominantColor = MaterialTheme.colorScheme.surface
     var dominantColor by remember {
@@ -47,6 +49,11 @@ fun PokemonSearchItem(
         border = BorderStroke(1.dp, Color.Black),
         modifier = Modifier
             .size(120.dp)
+            .clickable {
+                onPokemonCardClick(
+                    pokemonCard.name
+                )
+            }
     ) {
         Column(
             modifier = Modifier

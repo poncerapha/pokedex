@@ -1,5 +1,6 @@
 package com.example.pokedex.di.modules
 
+import com.example.pokedex.network.restclient.PokemonPageRestClient
 import com.example.pokedex.network.restclient.PokemonSearchRestClient
 import dagger.Module
 import dagger.Provides
@@ -29,6 +30,12 @@ object RetrofitModule {
     @Singleton
     fun providePokemonSearchRestClient(retrofit: Retrofit): PokemonSearchRestClient {
         return retrofit.create(PokemonSearchRestClient::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePokemonPageRestClient(retrofit: Retrofit): PokemonPageRestClient {
+        return retrofit.create(PokemonPageRestClient::class.java)
     }
 
     @Provides

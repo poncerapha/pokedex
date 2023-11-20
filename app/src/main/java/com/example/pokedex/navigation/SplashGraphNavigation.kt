@@ -5,15 +5,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 
+internal const val splashScreenRoute = "splashScreen"
+
 fun NavGraphBuilder.splashGraph(
-    navController: NavController
 ) {
     composable(
-        route = DestinationsPokedex.SplashScreen.route
+        route = splashScreenRoute
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
