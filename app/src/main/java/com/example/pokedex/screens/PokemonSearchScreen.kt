@@ -112,14 +112,5 @@ fun PokemonSearchScreen(
                 }
             }
         }
-
-
     }
 }
-
-//@OptIn(ExperimentalMaterial3Api::class)
-//@Preview(showSystemUi = true, name = "PokemonSearchScreen")
-//@Composable
-//fun PokemonSearchScreenPreview(uiState: UIState<List<PokemonCard>> = UIState.Success(listOf())) {
-//    PokemonSearchScreen(uiState)
-//}

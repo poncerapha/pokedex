@@ -18,14 +18,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-//    @Provides
-//    @Singleton
-//    fun providePokemonSearchRemoteProvider(
-//        pokemonSearchRestClient: PokemonSearchRestClient
-//    ): PokemonSearchRemoteProvider {
-//        return PokemonSearchRemoteProviderImpl(pokemonSearchRestClient)
-//    }
-
     @Provides
     @Singleton
     fun providePokemonSearchRepository(

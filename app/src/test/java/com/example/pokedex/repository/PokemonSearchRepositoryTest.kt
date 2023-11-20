@@ -4,7 +4,6 @@ import com.example.utils.MainCoroutineRule
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.pokedex.dto.PokemonSearchDTO
 import com.example.pokedex.models.PokemonSearch
-import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProvider
 import com.example.pokedex.network.utils.Response
 import com.example.pokedex.network.utils.Result
 import com.example.pokedex.network.utils.Result.*
@@ -20,7 +19,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class PokemonUiStateSearchRepositoryTest {
+class PokemonSearchRepositoryTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()

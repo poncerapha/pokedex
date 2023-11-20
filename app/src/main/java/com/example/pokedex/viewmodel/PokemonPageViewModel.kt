@@ -3,7 +3,7 @@ package com.example.pokedex.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.models.PokemonUiState
+import com.example.pokedex.models.Pokemon
 import com.example.pokedex.navigation.pokemonNameArgument
 import com.example.pokedex.network.utils.onSuccess
 import com.example.pokedex.repository.PokemonPageRepository
@@ -20,8 +20,8 @@ class PokemonPageViewModel @Inject constructor(
     private val pokemonPageRepository: PokemonPageRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(PokemonUiState())
-    val uiState: StateFlow<PokemonUiState>
+    private val _uiState = MutableStateFlow(Pokemon())
+    val uiState: StateFlow<Pokemon>
         get() = _uiState.asStateFlow()
 
     init {
@@ -37,7 +37,8 @@ class PokemonPageViewModel @Inject constructor(
                                 sprites = it.sprites,
                                 moves = it.moves,
                                 height = it.height,
-                                weight = it.weight
+                                weight = it.weight,
+                                order = it.order
                             )
                         }
                 }

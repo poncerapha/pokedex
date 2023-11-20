@@ -1,8 +1,8 @@
 package com.example.pokedex.remoteprovider
 
-import com.example.pokedex.dto.PokemonDTO
-import com.example.pokedex.network.remoteprovider.PokemonPageRemoteProviderImpl
-import com.example.pokedex.network.restclient.PokemonPageRestClient
+import com.example.pokedex.dto.PokemonSearchDTO
+import com.example.pokedex.network.remoteprovider.PokemonSearchRemoteProviderImpl
+import com.example.pokedex.network.restclient.PokemonSearchRestClient
 import com.example.utils.MockkStaticLog
 import com.example.pokedex.network.utils.Response
 import com.example.utils.MainCoroutineRule
@@ -21,15 +21,16 @@ import org.junit.Test
 import retrofit2.Response as RetrofitResponse
 
 @ExperimentalCoroutinesApi
-class PokemonUiStatePageRemoteProviderTest {
+class PokemonSearchRemoteProviderTest {
     @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private val name = "name"
-    private val pokemonPageRestClient = mockk<PokemonPageRestClient>()
-    private val remoteProvider = PokemonPageRemoteProviderImpl(
-        pokemonPageRestClient
+    private val pokemonSearchRestClient = mockk<PokemonSearchRestClient>()
+    private val limit: Int = 0
+    private val offset: Int = 0
+    private val remoteProvider = PokemonSearchRemoteProviderImpl(
+        pokemonSearchRestClient
     )
 
     @Before
@@ -39,21 +40,22 @@ class PokemonUiStatePageRemoteProviderTest {
     }
 
     @Test
-    fun getPokemon_returnsResponse() = runTest {
+    fun getPokemonSearch_returnsResponse() = runTest {
         // GIVEN
-        val fakeRetrofitResponse: RetrofitResponse<PokemonDTO> = mockk()
-        val fakeResponse: Response<PokemonDTO> = mockk()
+        val fakeRetrofitResponse: RetrofitResponse<PokemonSearchDTO> = mockk()
+        val fakeResponse: Response<PokemonSearchDTO> = mockk()
 
         coEvery {
-            pokemonPageRestClient.getPokemon(
-                name = any()
+            pokemonSearchRestClient.getPokemonList(
+                limit = any(),
+                offset = any()
             )
         } returns fakeRetrofitResponse
 
         coEvery { fakeRetrofitResponse.formatResponse() } returns fakeResponse
 
         //WHEN
-        val result = remoteProvider.getPokemon(name)
+        val result = remoteProvider.getPokemonList(limit, offset)
 
         //THEN
         assertEquals(fakeResponse, result)
@@ -61,8 +63,9 @@ class PokemonUiStatePageRemoteProviderTest {
         coVerify {
             safeCall<Any>(any())
 
-            pokemonPageRestClient.getPokemon(
-                name = name
+            pokemonSearchRestClient.getPokemonList(
+                limit = limit,
+                offset = offset
             )
         }
     }

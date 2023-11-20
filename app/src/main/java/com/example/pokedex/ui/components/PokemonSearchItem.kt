@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -32,6 +33,7 @@ import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.utils.calcDominantColor
+import com.example.pokedex.utils.getPokemonUrl
 
 @Composable
 fun PokemonSearchItem(
@@ -72,7 +74,7 @@ fun PokemonSearchItem(
             Spacer(modifier = Modifier.size(8.dp))
             SubcomposeAsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonIndex}.svg")
+                    .data(getPokemonUrl(pokemonIndex))
                     .decoderFactory(SvgDecoder.Factory()).build(),
                 contentDescription = "pokemonImage",
                 modifier = Modifier
@@ -80,7 +82,9 @@ fun PokemonSearchItem(
                     .align(Alignment.CenterHorizontally),
                 loading = {
                     CircularProgressIndicator(
-                        color = MaterialTheme.colorScheme.primary
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .scale(0.5f)
                     )
                 },
                 onSuccess = { result ->

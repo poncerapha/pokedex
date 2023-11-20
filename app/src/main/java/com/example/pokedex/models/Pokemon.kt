@@ -1,9 +1,10 @@
 package com.example.pokedex.models
 
-data class PokemonUiState(
+data class Pokemon(
     val name: String = "",
     val sprites: Sprite? = null,
     val moves: List<Moves> = listOf(),
     val height: Int = 0,
-    val weight: Int = 0
+    val weight: Int = 0,
+    val order: Int = 0
 )

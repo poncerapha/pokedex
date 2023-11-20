@@ -17,8 +17,8 @@ fun NavGraphBuilder.pokemonPageScreen() {
         route = "$pokemonPageRoute/{$pokemonNameArgument}"
     ) {
         val viewModel: PokemonPageViewModel = hiltViewModel()
-        val state by viewModel.uiState.collectAsState()
-        PokemonPageScreen(state = state)
+        val pokemon by viewModel.uiState.collectAsState()
+        PokemonPageScreen(pokemon = pokemon)
     }
 }
 

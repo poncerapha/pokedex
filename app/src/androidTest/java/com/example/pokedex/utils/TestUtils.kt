@@ -5,17 +5,14 @@ import com.example.pokedex.models.PokemonCard
 val pokemonToTest = arrayListOf(
     PokemonCard(
         name = "name",
-        url = "url",
-        number = 1
+        url = "url"
     ),
     PokemonCard(
         name = "name2",
-        url = "url2",
-        number = 2
+        url = "url2"
     ),
     PokemonCard(
         name = "name3",
-        url = "url3",
-        number = 3
+        url = "url3"
     )
 )
