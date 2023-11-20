@@ -8,7 +8,6 @@ import retrofit2.http.Query
 interface PokemonSearchRestClient {
     @GET("/api/v2/pokemon")
     suspend fun getPokemonList(
-        @Query("limit") limit: Int,
         @Query("offset") offset: Int
     ): Response<PokemonSearchDTO>
 }

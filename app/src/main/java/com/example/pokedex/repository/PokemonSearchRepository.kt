@@ -1,8 +1,9 @@
 package com.example.pokedex.repository
 
-import com.example.pokedex.models.PokemonSearch
-import com.example.pokedex.network.utils.Result
+import androidx.paging.PagingData
+import com.example.pokedex.models.PokemonCard
+import kotlinx.coroutines.flow.Flow
 
 interface PokemonSearchRepository {
-    suspend fun getPokemonList(limit: Int, offset: Int): Result<PokemonSearch>
+    fun getPokemonList(): Flow<PagingData<PokemonCard>>
 }
