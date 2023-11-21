@@ -26,7 +26,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.pokedex.R
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.ui.components.ErrorMessage
-import com.example.pokedex.ui.components.LoadingNextPageItem
 import com.example.pokedex.ui.components.PageLoader
 import com.example.pokedex.ui.components.PokemonSearchItem
 import kotlinx.coroutines.flow.Flow
@@ -98,10 +97,6 @@ private fun handlePagingEvents(pagingItems: LazyPagingItems<PokemonCard>) {
                     modifier = Modifier.fillMaxSize(),
                     message = error.error.localizedMessage!!,
                     onClickRetry = { retry() })
-            }
-
-            loadState.append is LoadState.Loading -> {
-                LoadingNextPageItem(modifier = Modifier)
             }
 
             loadState.append is LoadState.Error -> {

@@ -1,12 +1,8 @@
 package com.example.pokedex.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -37,26 +33,5 @@ fun ErrorMessage(
         OutlinedButton(onClick = onClickRetry) {
             Text(text = stringResource(id = R.string.buttonRetry))
         }
-    }
-}
-
-@Composable
-fun LoadingNextPageItem(modifier: Modifier) {
-    CircularProgressIndicator(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(10.dp)
-            .wrapContentWidth(Alignment.CenterHorizontally)
-    )
-}
-
-@Composable
-fun PageLoader(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        CircularProgressIndicator(Modifier.padding(top = 10.dp))
     }
 }
