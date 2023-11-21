@@ -16,7 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PokemonDetailTopSection(modifier: Modifier, onBackStackClick: () -> Unit = {}) {
+fun PokemonDetailTopSection(
+    modifier: Modifier = Modifier,
+    onBackStackClick: () -> Unit
+) {
     Box(
         contentAlignment = Alignment.TopStart,
         modifier = modifier
@@ -31,9 +34,9 @@ fun PokemonDetailTopSection(modifier: Modifier, onBackStackClick: () -> Unit = {
     ) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
-            contentDescription = "backIcon",
+            contentDescription = null,
             tint = Color.White,
-            modifier = modifier
+            modifier = Modifier
                 .size(36.dp)
                 .offset(16.dp, 16.dp)
                 .clickable {

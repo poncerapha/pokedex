@@ -18,7 +18,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
@@ -28,13 +27,12 @@ import com.example.pokedex.models.Pokemon
 import com.example.pokedex.ui.components.PokemonDetailTopSection
 import com.example.pokedex.ui.components.PokemonDetailsStateWrapper
 import com.example.pokedex.utils.UIState
-import com.example.pokedex.utils.samplePokemon
 
 @Composable
 fun PokemonPageScreen(
     uiState: UIState<Pokemon>,
     dominantColor: Color = Color.White,
-    onBackStackClick: () -> Unit = {}
+    onBackStackClick: () -> Unit
 ) {
     val defaultDominantColor = MaterialTheme.colorScheme.surface
     val topPadding = 16.dp
@@ -49,7 +47,8 @@ fun PokemonPageScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(0.2f)
-                .align(Alignment.TopStart)
+                .align(Alignment.TopCenter),
+            onBackStackClick = onBackStackClick
         )
 
         PokemonDetailsStateWrapper(
@@ -100,10 +99,10 @@ fun PokemonPageScreen(
     }
 }
 
-@Preview(showSystemUi = true)
-@Composable
-fun PokemonPageScreenPreview() {
-    PokemonPageScreen(UIState.Success(
-        samplePokemon
-    ))
-}
+//@Preview(showSystemUi = true)
+//@Composable
+//fun PokemonPageScreenPreview() {
+//    PokemonPageScreen(UIState.Success(
+//        samplePokemon
+//    ))
+//}

@@ -20,6 +20,10 @@ fun PokedexNavHost(navController: NavHostController) {
                 navController.navigateToPokemonPage(pokemonName)
             }
         )
-        pokemonPageScreen()
+        pokemonPageScreen(
+            onNavigateToPokemonSearch = {
+                navController.navigateUp()
+            }
+        )
     }
 }
