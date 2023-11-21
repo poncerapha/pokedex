@@ -43,6 +43,33 @@ fun PokemonSearchScreen(
         contentAlignment = Alignment.Center
     ) {
         val pagingItems: LazyPagingItems<PokemonCard> = pokemonList.collectAsLazyPagingItems()
+        pagingItems.apply {
+            when {
+                loadState.refresh is LoadState.Loading -> {
+                    PageLoader(modifier = Modifier.fillMaxSize())
+                }
+
+                loadState.refresh is LoadState.Error -> {
+                    val error = pagingItems.loadState.refresh as LoadState.Error
+                    ErrorMessage(
+                        modifier = Modifier.fillMaxSize(),
+                        message = error.error.localizedMessage!!,
+                        onClickRetry = { retry() })
+                }
+
+                loadState.append is LoadState.Loading -> {
+                    LoadingNextPageItem(modifier = Modifier)
+                }
+
+                loadState.append is LoadState.Error -> {
+                    val error = pagingItems.loadState.append as LoadState.Error
+                    ErrorMessage(
+                        modifier = Modifier,
+                        message = error.error.localizedMessage!!,
+                        onClickRetry = { retry() })
+                }
+            }
+        }
 
         Column(
             modifier = Modifier
@@ -77,38 +104,6 @@ fun PokemonSearchScreen(
                         pokemonIndex = index + 1,
                         onPokemonCardClick = onPokemonCardClick
                     )
-                }
-
-                pagingItems.apply {
-                    when {
-                        loadState.refresh is LoadState.Loading -> {
-                            item { PageLoader(modifier = Modifier.fillMaxSize()) }
-                        }
-
-                        loadState.refresh is LoadState.Error -> {
-                            val error = pagingItems.loadState.refresh as LoadState.Error
-                            item {
-                                ErrorMessage(
-                                    modifier = Modifier.fillMaxSize(),
-                                    message = error.error.localizedMessage!!,
-                                    onClickRetry = { retry() })
-                            }
-                        }
-
-                        loadState.append is LoadState.Loading -> {
-                            item { LoadingNextPageItem(modifier = Modifier) }
-                        }
-
-                        loadState.append is LoadState.Error -> {
-                            val error = pagingItems.loadState.append as LoadState.Error
-                            item {
-                                ErrorMessage(
-                                    modifier = Modifier,
-                                    message = error.error.localizedMessage!!,
-                                    onClickRetry = { retry() })
-                            }
-                        }
-                    }
                 }
             }
         }
