@@ -14,12 +14,8 @@ class PokemonSearchRepositoryImpl @Inject constructor(
 ): PokemonSearchRepository {
     override fun getPokemonList(): Flow<PagingData<PokemonCard>> {
         return Pager(
-            config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
+            config = PagingConfig(pageSize = 1),
             pagingSourceFactory = { PokemonSearchPagingSource(pokemonSearchRestClient) }
         ).flow
-    }
-
-    companion object {
-        private const val NETWORK_PAGE_SIZE = 20
     }
 }

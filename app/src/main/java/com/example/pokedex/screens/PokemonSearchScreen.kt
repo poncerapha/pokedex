@@ -43,33 +43,7 @@ fun PokemonSearchScreen(
         contentAlignment = Alignment.Center
     ) {
         val pagingItems: LazyPagingItems<PokemonCard> = pokemonList.collectAsLazyPagingItems()
-        pagingItems.apply {
-            when {
-                loadState.refresh is LoadState.Loading -> {
-                    PageLoader(modifier = Modifier.fillMaxSize())
-                }
-
-                loadState.refresh is LoadState.Error -> {
-                    val error = pagingItems.loadState.refresh as LoadState.Error
-                    ErrorMessage(
-                        modifier = Modifier.fillMaxSize(),
-                        message = error.error.localizedMessage!!,
-                        onClickRetry = { retry() })
-                }
-
-                loadState.append is LoadState.Loading -> {
-                    LoadingNextPageItem(modifier = Modifier)
-                }
-
-                loadState.append is LoadState.Error -> {
-                    val error = pagingItems.loadState.append as LoadState.Error
-                    ErrorMessage(
-                        modifier = Modifier,
-                        message = error.error.localizedMessage!!,
-                        onClickRetry = { retry() })
-                }
-            }
-        }
+        handlePagingEvents(pagingItems)
 
         Column(
             modifier = Modifier
@@ -91,7 +65,7 @@ fun PokemonSearchScreen(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(PaddingValues(vertical = 8.dp)),
+                    .padding(PaddingValues(top = 8.dp)),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
@@ -105,6 +79,37 @@ fun PokemonSearchScreen(
                         onPokemonCardClick = onPokemonCardClick
                     )
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun handlePagingEvents(pagingItems: LazyPagingItems<PokemonCard>) {
+    pagingItems.apply {
+        when {
+            loadState.refresh is LoadState.Loading -> {
+                PageLoader(modifier = Modifier.fillMaxSize())
+            }
+
+            loadState.refresh is LoadState.Error -> {
+                val error = pagingItems.loadState.refresh as LoadState.Error
+                ErrorMessage(
+                    modifier = Modifier.fillMaxSize(),
+                    message = error.error.localizedMessage!!,
+                    onClickRetry = { retry() })
+            }
+
+            loadState.append is LoadState.Loading -> {
+                LoadingNextPageItem(modifier = Modifier)
+            }
+
+            loadState.append is LoadState.Error -> {
+                val error = pagingItems.loadState.append as LoadState.Error
+                ErrorMessage(
+                    modifier = Modifier,
+                    message = error.error.localizedMessage!!,
+                    onClickRetry = { retry() })
             }
         }
     }

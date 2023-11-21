@@ -8,8 +8,6 @@ import com.example.pokedex.network.restclient.PokemonSearchRestClient
 
 const val POKEMON_STARTING_OFFSET = 0
 const val POKEMON_OFFSET = 20
-const val LAST_OFFSET = 885
-const val LAST_POSITION = 45
 
 class PokemonSearchPagingSource(
     private val pokemonSearchRestClient: PokemonSearchRestClient
@@ -19,11 +17,7 @@ class PokemonSearchPagingSource(
         val position = params.key ?: POKEMON_STARTING_OFFSET
         return try {
             val response = pokemonSearchRestClient.getPokemonList(
-                if (position == LAST_POSITION) {
-                    LAST_OFFSET
-                } else {
-                    position * POKEMON_OFFSET
-                }
+                position * POKEMON_OFFSET
             )
             val pokemons = mutableListOf<PokemonCard>()
             response.results.mapIndexed { index, pokemonCardDTO ->
@@ -32,7 +26,7 @@ class PokemonSearchPagingSource(
             LoadResult.Page(
                 data = pokemons,
                 prevKey = if (position == 0) null else position,
-                nextKey = if (position == LAST_POSITION) null else position + 1
+                nextKey = if (position == response.count) null else position + 1
             )
         } catch (exception: Exception) {
             LoadResult.Error(exception)
