@@ -1,53 +1,33 @@
 package com.example.pokedex.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.constants.PokemonSearchConstants.INITIAL_OFFSET
-import com.example.pokedex.constants.PokemonSearchConstants.POKEMON_SEARCH_LIMIT
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.pokedex.models.PokemonCard
-import com.example.pokedex.network.utils.UIPagingState
-import com.example.pokedex.network.utils.onError
-import com.example.pokedex.network.utils.onSuccess
 import com.example.pokedex.repository.PokemonSearchRepository
-import com.example.pokedex.utils.getPokemonImage
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
-class PokemonSearchViewModel(
-    private val pokemonSearchRepository: PokemonSearchRepository
-): ViewModel() {
-    private val _pokemonSearchList = MutableLiveData<UIPagingState<List<PokemonCard>>>()
-    val pokemonSearchList get() = _pokemonSearchList
+@HiltViewModel
+class PokemonSearchViewModel @Inject constructor(
+    pokemonSearchRepository: PokemonSearchRepository
+) : ViewModel() {
 
-    private val _pokemonList = mutableListOf<PokemonCard>()
-    val pokemonList: List<PokemonCard> get() = _pokemonList
+    private val _pokemonListState: MutableStateFlow<PagingData<PokemonCard>> = MutableStateFlow(value = PagingData.empty())
+    val pokemonListState: MutableStateFlow<PagingData<PokemonCard>> get() = _pokemonListState
 
-    private var offset = INITIAL_OFFSET
-    private var pokedexTotalCount: Int = 0
-
-    fun getPokemonSearchList() = viewModelScope.launch {
-        val isPaging = offset != INITIAL_OFFSET
-        _pokemonSearchList.value = if (isPaging) {
-            UIPagingState.PagingLoading()
-        } else {
-            UIPagingState.Loading()
+    init {
+        viewModelScope.launch {
+            pokemonSearchRepository.getPokemonList()
+                .distinctUntilChanged()
+                .cachedIn(viewModelScope)
+                .collect{
+                    pokemonListState.value = it
+                }
         }
-        pokemonSearchRepository.getPokemonList(
-            limit = POKEMON_SEARCH_LIMIT,
-            offset = offset
-        )
-            .onSuccess { pokemonSearch ->
-                pokedexTotalCount = pokemonSearch.count
-                _pokemonList.addAll(pokemonSearch.getPokemonImage())
-                _pokemonSearchList.value = UIPagingState.Success(pokemonSearch.results)
-                offset += POKEMON_SEARCH_LIMIT
-            }
-            .onError {
-                _pokemonSearchList.value = UIPagingState.Error()
-            }
-    }
-
-    fun isLastPage(): Boolean {
-        return offset + POKEMON_SEARCH_LIMIT >= pokedexTotalCount
     }
 }

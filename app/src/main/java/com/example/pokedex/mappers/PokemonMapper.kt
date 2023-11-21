@@ -9,6 +9,9 @@ fun PokemonDTO.toPokemonModel(): Pokemon {
         sprites = sprites.toSpriteModel(),
         moves = moves.map { it.toMovesModel() },
         height = height,
-        weight = weight
+        weight = weight,
+        id = id,
+        types = types.map { it.toTypesModel() },
+        stats = stats.map { it.toStatsModel() }
     )
 }

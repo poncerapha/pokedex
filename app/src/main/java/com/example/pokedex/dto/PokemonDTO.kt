@@ -1,13 +1,14 @@
 package com.example.pokedex.dto
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 data class PokemonDTO(
-    @JsonProperty("name") val name: String,
-    @JsonProperty("sprites") val sprites: SpriteDTO,
-    @JsonProperty("moves") val moves: List<MovesDTO>,
-    @JsonProperty("height") val height: Int,
-    @JsonProperty("weight") val weight: Int
+    @SerializedName("name") val name: String,
+    @SerializedName("sprites") val sprites: SpriteDTO,
+    @SerializedName("moves") val moves: List<MovesDTO>,
+    @SerializedName("height") val height: Int,
+    @SerializedName("weight") val weight: Int,
+    @SerializedName("id") val id: Int,
+    @SerializedName("types") val types: List<TypesDTO>,
+    @SerializedName("stats") val stats: List<StatsDTO>
 )
