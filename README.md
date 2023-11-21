@@ -50,7 +50,7 @@ Para saber mais sobre o MockK, visite [a documentação oficial](https://mockk.i
 ## 📲 Resultado Final
 
 <div align="center">
-  <video src="https://github.com/poncerapha/pokedex/assets/38406330/34d05ccc-faec-4315-ae78-ee9023d44a2a" width="400" />
+  <video src="https://github.com/poncerapha/pokedex/assets/38406330/011dc385-cf9e-4940-b44b-0610cb163aea" width="400" />
 </div>
 
 ## ⚡ Futuras Melhorias
