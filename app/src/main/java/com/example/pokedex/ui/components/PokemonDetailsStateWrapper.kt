@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.pokedex.models.Pokemon
-import com.example.pokedex.utils.UIState
+import com.example.pokedex.network.utils.UIState
 
 @Composable
 fun PokemonDetailsStateWrapper(

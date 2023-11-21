@@ -1,11 +1,13 @@
 package com.example.pokedex.network.utils
 
 import com.example.pokedex.dto.ErrorBody
+import com.example.pokedex.network.utils.Result.Error
+import com.example.pokedex.network.utils.Result.Success
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import retrofit2.Response as RetrofitResponse
 
-open class Response<T> {
+sealed class Response<T> {
     class Success<T>(private val response: RetrofitResponse<T>) : Response<T>() {
         val value get() = response.body()
     }
@@ -25,12 +27,9 @@ open class Response<T> {
 
     fun <R> toResult(mapper: (T) -> R): Result<R> {
         return when (this) {
-            is Success -> Result.Success(mapper(requireNotNull(value)))
-            is Error -> Result.Error(message = httpStatusMessage, statusCode = httpCode)
-            is ErrorException -> Result.Error(throwable = exception)
-            else -> Result.Error()
+            is Success -> Success(mapper(requireNotNull(value)))
+            is Error -> Error(message = httpStatusMessage, statusCode = httpCode)
+            is ErrorException -> Error(throwable = exception)
         }
     }
-
-    fun toResult(): Result<Unit> = toResult(mapper = {})
 }

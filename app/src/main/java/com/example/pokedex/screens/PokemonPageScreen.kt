@@ -24,9 +24,9 @@ import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.pokedex.R
 import com.example.pokedex.models.Pokemon
+import com.example.pokedex.network.utils.UIState
 import com.example.pokedex.ui.components.PokemonDetailTopSection
 import com.example.pokedex.ui.components.PokemonDetailsStateWrapper
-import com.example.pokedex.utils.UIState
 
 @Composable
 fun PokemonPageScreen(
@@ -34,7 +34,6 @@ fun PokemonPageScreen(
     dominantColor: Color = Color.White,
     onBackStackClick: () -> Unit
 ) {
-    val defaultDominantColor = MaterialTheme.colorScheme.surface
     val topPadding = 16.dp
     val pokemonImageSize = 150.dp
     Box(
@@ -98,11 +97,3 @@ fun PokemonPageScreen(
         }
     }
 }
-
-//@Preview(showSystemUi = true)
-//@Composable
-//fun PokemonPageScreenPreview() {
-//    PokemonPageScreen(UIState.Success(
-//        samplePokemon
-//    ))
-//}

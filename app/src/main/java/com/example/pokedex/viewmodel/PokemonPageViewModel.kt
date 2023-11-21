@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.models.Pokemon
 import com.example.pokedex.navigation.pokemonNameArgument
+import com.example.pokedex.network.utils.UIState
 import com.example.pokedex.network.utils.onError
 import com.example.pokedex.network.utils.onSuccess
 import com.example.pokedex.repository.PokemonPageRepository
-import com.example.pokedex.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

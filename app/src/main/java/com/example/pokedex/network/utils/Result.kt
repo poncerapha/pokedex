@@ -1,6 +1,6 @@
 package com.example.pokedex.network.utils
 
-open class Result<out R> {
+sealed class Result<out R> {
     class Success<out T>(val data: T) : Result<T>()
     open class Error(
         val message: String? = null,
@@ -15,7 +15,7 @@ inline fun <T> Result<T>.onSuccess(action: (T) -> Unit): Result<T> {
     return this
 }
 
-inline fun <T> Result<T>.onError(action: (Error) -> Unit): Result<T> {
-    if (this is Error) action(this)
+inline fun <T> Result<T>.onError(action: (Result.Error) -> Unit): Result<T> {
+    if (this is Result.Error) action(this)
     return this
 }
