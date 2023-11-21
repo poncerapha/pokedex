@@ -29,17 +29,17 @@ $ git clone https://github.com/poncerapha/pokedex.git
 
 ## 👨‍💻 Tecnologias Principais
 
-### Koin
+### Hilt
 
-O Koin é utilizado para gerenciar a injeção de dependência em todo o aplicativo. Ele permite a criação de módulos para fornecer e injetar dependências em componentes do Android, tornando o código mais limpo e desacoplado.
+Hilt é uma estrutura de injeção de dependência oficial do Android, desenvolvida pelo Google. Injeção de dependência é um padrão de design que facilita a criação de aplicativos mais testáveis e modularizados, reduzindo o acoplamento entre diferentes partes do código.
 
-Para saber mais sobre o Koin, visite [a documentação oficial](https://insert-koin.io/).
+Para saber mais sobre o Hilt, visite [a documentação oficial](https://dagger.dev/hilt/).
 
-### Epoxy
+### Jetpack Compose
 
-O Epoxy é uma biblioteca de criação de interfaces de usuário que facilita a construção de listas complexas e desempenho otimizado no Android. O aplicativo utiliza o Epoxy para criar exibições de lista personalizadas para exibir informações sobre Pokémon.
+Jetpack Compose é um moderno toolkit de UI para o desenvolvimento de aplicativos Android. Ele permite que você crie interfaces de usuário de forma declarativa, usando componentes compostos, tornando o desenvolvimento de interfaces de usuário mais simples e flexível. Com Compose, você pode criar aplicativos Android de forma mais eficiente, aproveitando a natureza reativa e a programação funcional.
 
-Para saber mais sobre o Epoxy, visite [a documentação oficial](https://github.com/airbnb/epoxy).
+Para saber mais sobre o Jetpack Compose, visite [a documentação oficial](https://developer.android.com/jetpack/compose?gclid=CjwKCAjw-eKpBhAbEiwAqFL0mq6W1-98qW5uiDgMC7YGTtTuJGD2DcpiExLDUcNyAKTlV_JZrawl1hoCwlYQAvD_BwE&gclsrc=aw.ds).
 
 ### MockK
 
@@ -50,34 +50,16 @@ Para saber mais sobre o MockK, visite [a documentação oficial](https://mockk.i
 ## 📲 Resultado Final
 
 <div align="center">
-  <video src="https://github.com/poncerapha/pokedex/assets/38406330/b57ab871-a5ec-4e6b-960a-5da0f4134c2e" width="400" />
+  <video src="https://github.com/poncerapha/pokedex/assets/38406330/34d05ccc-faec-4315-ae78-ee9023d44a2a" width="400" />
 </div>
 
 ## ⚡ Futuras Melhorias
-
-### Jetpack Compose
-
-Jetpack Compose é um moderno toolkit de UI para o desenvolvimento de aplicativos Android. Ele permite que você crie interfaces de usuário de forma declarativa, usando componentes compostos, tornando o desenvolvimento de interfaces de usuário mais simples e flexível. Com Compose, você pode criar aplicativos Android de forma mais eficiente, aproveitando a natureza reativa e a programação funcional.
-
-Para saber mais sobre o Jetpack Compose, visite [a documentação oficial](https://developer.android.com/jetpack/compose?gclid=CjwKCAjw-eKpBhAbEiwAqFL0mq6W1-98qW5uiDgMC7YGTtTuJGD2DcpiExLDUcNyAKTlV_JZrawl1hoCwlYQAvD_BwE&gclsrc=aw.ds).
 
 ### Room
 
 Room é uma biblioteca da arquitetura Android Jetpack que simplifica o acesso a bancos de dados SQLite no Android. Ela fornece uma camada de abstração sobre o SQLite e ajuda a gerenciar o acesso a dados de forma mais organizada e eficiente. Com o Room, você pode definir esquemas de banco de dados em classes Java/Kotlin e realizar operações de CRUD de maneira simples.
 
 Para saber mais sobre o Room, visite [a documentação oficial](https://developer.android.com/jetpack/androidx/releases/room).
-
-### State Flow
-
-State Flow é uma classe da biblioteca Kotlin Coroutines que fornece uma maneira reativa de propagar e observar mudanças de estado no aplicativo. Ele é amplamente usado para lidar com fluxos de dados em tempo real e gerenciar a comunicação assíncrona entre componentes do aplicativo. State Flow é uma escolha popular para lidar com eventos e notificações em aplicativos Android modernos.
-
-Para saber mais sobre o State Flow, visite [a documentação oficial](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow).
-
-### Espresso
-
-Espresso é uma estrutura de teste automatizado desenvolvida pelo Google para testar aplicativos Android. Ele é usado para criar testes funcionais que simulam a interação do usuário com o aplicativo. Espresso permite que você escreva testes que verificam se a interface do usuário responde corretamente às ações do usuário, como toques, gestos e digitação. É uma ferramenta valiosa para garantir a qualidade e a estabilidade de seus aplicativos Android.
-
-Para saber mais sobre o Espresso, visite [a documentação oficial](https://developer.android.com/training/testing/espresso).
 
 ## 💼 Contribuição
 
