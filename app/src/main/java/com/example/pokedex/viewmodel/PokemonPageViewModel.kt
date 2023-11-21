@@ -5,8 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokedex.models.Pokemon
 import com.example.pokedex.navigation.pokemonNameArgument
+import com.example.pokedex.network.utils.onError
 import com.example.pokedex.network.utils.onSuccess
 import com.example.pokedex.repository.PokemonPageRepository
+import com.example.pokedex.utils.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,8 +22,8 @@ class PokemonPageViewModel @Inject constructor(
     private val pokemonPageRepository: PokemonPageRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(Pokemon())
-    val uiState: StateFlow<Pokemon>
+    private val _uiState = MutableStateFlow<UIState<Pokemon>>(UIState.Loading())
+    val uiState: StateFlow<UIState<Pokemon>>
         get() = _uiState.asStateFlow()
 
     init {
@@ -32,14 +34,10 @@ class PokemonPageViewModel @Inject constructor(
                 .collect { pokemonName ->
                     pokemonPageRepository.getPokemon(name = pokemonName)
                         .onSuccess {
-                            _uiState.value = uiState.value.copy(
-                                name = it.name,
-                                sprites = it.sprites,
-                                moves = it.moves,
-                                height = it.height,
-                                weight = it.weight,
-                                order = it.order
-                            )
+                            _uiState.value = UIState.Success(it)
+                        }
+                        .onError {
+                            _uiState.value = UIState.Error()
                         }
                 }
         }

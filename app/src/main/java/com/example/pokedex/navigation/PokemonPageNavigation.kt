@@ -2,6 +2,7 @@ package com.example.pokedex.navigation
 
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -17,8 +18,8 @@ fun NavGraphBuilder.pokemonPageScreen() {
         route = "$pokemonPageRoute/{$pokemonNameArgument}"
     ) {
         val viewModel: PokemonPageViewModel = hiltViewModel()
-        val pokemon by viewModel.uiState.collectAsState()
-        PokemonPageScreen(pokemon = pokemon)
+        val uIState by viewModel.uiState.collectAsState()
+        PokemonPageScreen(uiState = uIState, Color.White)
     }
 }
 

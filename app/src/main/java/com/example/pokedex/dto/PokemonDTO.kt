@@ -8,5 +8,7 @@ data class PokemonDTO(
     @SerializedName("moves") val moves: List<MovesDTO>,
     @SerializedName("height") val height: Int,
     @SerializedName("weight") val weight: Int,
-    @SerializedName("order") val order: Int,
+    @SerializedName("id") val id: Int,
+    @SerializedName("types") val types: List<TypesDTO>,
+    @SerializedName("stats") val stats: List<StatsDTO>
 )
