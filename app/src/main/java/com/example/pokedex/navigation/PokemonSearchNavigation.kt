@@ -25,5 +25,9 @@ fun NavGraphBuilder.pokemonSearchScreen(
 }
 
 fun NavController.navigateToPokemonSearch() {
-    navigate(pokemonSearchRoute)
+    navigate(pokemonSearchRoute) {
+        popUpTo(splashScreenRoute) {
+            inclusive = true
+        }
+    }
 }

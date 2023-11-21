@@ -115,4 +115,7 @@ dependencies {
 
     //Paging3
     implementation("androidx.paging:paging-compose:3.3.0-alpha02")
+
+    //lottier
+    implementation("com.airbnb.android:lottie-compose:5.2.0")
 }

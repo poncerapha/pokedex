@@ -8,9 +8,13 @@ import androidx.navigation.compose.NavHost
 fun PokedexNavHost(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = pokemonSearchRoute
+        startDestination = splashScreenRoute
     ) {
-        splashGraph()
+        splashScreen(
+            onNavigateToPokemonSearch = {
+                navController.navigateToPokemonSearch()
+            }
+        )
         pokemonSearchScreen(
             onNavigateToPokemonPage = { pokemonName ->  
                 navController.navigateToPokemonPage(pokemonName)
