@@ -22,7 +22,6 @@ class PokemonSearchItemTest {
         composeTestRule.waitUntil(3000) {
             composeTestRule.onAllNodesWithContentDescription("pokemonImage").fetchSemanticsNodes().size == 1
         }
-
     }
 
     private fun startPokemonList() {
