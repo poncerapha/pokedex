@@ -2,12 +2,11 @@ package com.example.pokedex.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.pokedex.constants.PokemonConstants.POKEMON_OFFSET
+import com.example.pokedex.constants.PokemonConstants.POKEMON_STARTING_OFFSET
 import com.example.pokedex.mappers.toPokemonCardModel
 import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.network.restclient.PokemonSearchRestClient
-
-const val POKEMON_STARTING_OFFSET = 0
-const val POKEMON_OFFSET = 20
 
 class PokemonSearchPagingSource(
     private val pokemonSearchRestClient: PokemonSearchRestClient

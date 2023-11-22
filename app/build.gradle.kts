@@ -58,8 +58,8 @@ dependencies {
     val navVersion = "2.7.5"
     val retrofitVersion = "2.9.0"
     val shimmerVersion = "0.5.0"
-    val mockkVersion = "1.12.4"
-    val androidxArchVersion = "2.1.0"
+    val mockkVersion = "1.13.8"
+    val androidxArchVersion = "2.2.0"
 
     implementation("androidx.navigation:navigation-compose:$navVersion")
     androidTestImplementation("androidx.navigation:navigation-testing:$navVersion")
@@ -104,7 +104,7 @@ dependencies {
     testImplementation("io.mockk:mockk-agent-jvm:$mockkVersion")
     testImplementation("io.mockk:mockk-android:$mockkVersion")
     testImplementation("androidx.arch.core:core-testing:$androidxArchVersion")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
     // Coroutine Lifecycle Scopes
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
