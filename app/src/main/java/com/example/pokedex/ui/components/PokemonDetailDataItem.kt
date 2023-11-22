@@ -18,6 +18,7 @@ fun PokemonDetailDataItem(
     dataValue: Float,
     dataUnit: String,
     dataIcon: Painter,
+    contentDescription: String,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -27,7 +28,7 @@ fun PokemonDetailDataItem(
     ) {
         Icon(
             painter = dataIcon,
-            contentDescription = "weightIcon",
+            contentDescription = contentDescription,
             tint = MaterialTheme.colorScheme.onSurface
         )
         Spacer(modifier = Modifier.height(8.dp))

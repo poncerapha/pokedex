@@ -1,26 +1,10 @@
-package com.example.pokedex.utils
+package com.example.utils
 
 import com.example.pokedex.models.Pokemon
-import com.example.pokedex.models.PokemonCard
 import com.example.pokedex.models.Stat
 import com.example.pokedex.models.Stats
 import com.example.pokedex.models.Type
 import com.example.pokedex.models.Types
-
-val pokemonToTest = listOf(
-    PokemonCard(
-        name = "name",
-        url = "url"
-    ),
-    PokemonCard(
-        name = "name2",
-        url = "url2"
-    ),
-    PokemonCard(
-        name = "name3",
-        url = "url3"
-    )
-)
 
 val samplePokemon = Pokemon(
     name = "bulbasaur",
@@ -47,4 +31,3 @@ val samplePokemon = Pokemon(
         )
     )
 )
-

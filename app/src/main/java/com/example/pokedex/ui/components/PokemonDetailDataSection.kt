@@ -36,7 +36,8 @@ fun PokemonDetailDataSection(
             dataValue = pokemonWeightInKg,
             dataUnit = "kg" ,
             dataIcon = painterResource(id = R.drawable.ic_weight),
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
+            contentDescription = "weightIcon"
         )
 
         Spacer(modifier = Modifier
@@ -48,7 +49,8 @@ fun PokemonDetailDataSection(
             dataValue = pokemonHeightInMeters,
             dataUnit = "m" ,
             dataIcon = painterResource(id = R.drawable.ic_height),
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
+            contentDescription = "heightIcon"
         )
     }
 }

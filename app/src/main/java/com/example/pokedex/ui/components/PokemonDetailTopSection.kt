@@ -34,7 +34,7 @@ fun PokemonDetailTopSection(
     ) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
-            contentDescription = null,
+            contentDescription = "backArrowButton",
             tint = Color.White,
             modifier = Modifier
                 .size(36.dp)

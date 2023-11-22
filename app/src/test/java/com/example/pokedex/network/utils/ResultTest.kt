@@ -37,7 +37,7 @@ class ResultTest {
     fun getResult_onSuccess_returnsResultSuccess() {
         val dataTest = "dataTest"
         val fakeResult = Result.Success(dataTest)
-        val action = spyk({ _: String -> })
+        val action = spyk<(String) -> Unit>()
         val result = fakeResult.onSuccess(action)
 
         Assert.assertEquals(fakeResult, result)
@@ -49,7 +49,7 @@ class ResultTest {
     @Test
     fun getResult_onError_returnsResultError() {
         val fakeError = ResultError()
-        val action = spyk({ _: ResultError -> })
+        val action = spyk<(Result.Error) -> Unit>()
         val result = fakeError.onError(action)
 
         Assert.assertEquals(fakeError, result)

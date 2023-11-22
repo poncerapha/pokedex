@@ -32,7 +32,7 @@ import com.example.pokedex.ui.components.PokemonDetailsStateWrapper
 fun PokemonPageScreen(
     uiState: UIState<Pokemon>,
     dominantColor: Color = Color.White,
-    onBackStackClick: () -> Unit
+    onBackStackClick: () -> Unit = {}
 ) {
     val topPadding = 16.dp
     val pokemonImageSize = 150.dp

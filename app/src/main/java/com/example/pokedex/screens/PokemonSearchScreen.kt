@@ -35,13 +35,21 @@ fun PokemonSearchScreen(
     pokemonList: Flow<PagingData<PokemonCard>>,
     onPokemonCardClick: (pokemonName: String) -> Unit = {}
 ) {
+    val pagingItems: LazyPagingItems<PokemonCard> = pokemonList.collectAsLazyPagingItems()
+    PokemonSearchScreen(pagingItems, onPokemonCardClick)
+}
+
+@Composable
+fun PokemonSearchScreen(
+    pagingItems: LazyPagingItems<PokemonCard>,
+    onPokemonCardClick: (pokemonName: String) -> Unit = {}
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .padding(PaddingValues(horizontal = 16.dp)),
         contentAlignment = Alignment.Center
     ) {
-        val pagingItems: LazyPagingItems<PokemonCard> = pokemonList.collectAsLazyPagingItems()
         handlePagingEvents(pagingItems)
 
         Column(
@@ -81,6 +89,7 @@ fun PokemonSearchScreen(
             }
         }
     }
+
 }
 
 @Composable

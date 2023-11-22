@@ -6,8 +6,8 @@ import com.example.pokedex.network.utils.Result
 import com.example.pokedex.network.utils.UIState
 import com.example.pokedex.network.utils.data
 import com.example.pokedex.repository.PokemonPageRepository
-import com.example.pokedex.utils.samplePokemon
 import com.example.utils.MainCoroutineRule
+import com.example.utils.samplePokemon
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
